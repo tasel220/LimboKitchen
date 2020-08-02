@@ -5,3 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 public enum Parameters { a }
+public enum SceneTransitionType { FadeIO, }
+
+public enum SpriteName { None, BaekYum, Dowoon, Mina }

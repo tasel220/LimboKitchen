@@ -8,7 +8,7 @@ using UnityEngine;
 public static class Saver
 {
 
-    public static void SaveFile(DataHolder dr, int id)
+    public static void SaveFile(GameManager gm, int id)
     {
         PlayerPrefs.SetInt("file" + id, 1);
         foreach (string name in Enum.GetNames(typeof(Parameters)))
@@ -20,7 +20,7 @@ public static class Saver
         PlayerPrefs.Save();
     }
 
-    public static bool LoadFile(ref DataHolder dh, int id)
+    public static bool LoadFile(ref GameManager dh, int id)
     {
         if (!PlayerPrefs.HasKey("file" + id)) return false;
 
