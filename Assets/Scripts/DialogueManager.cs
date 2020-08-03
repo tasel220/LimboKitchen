@@ -130,7 +130,6 @@ public class DialogueManager : MonoBehaviour
                     emotion = emotion.Remove(0,1);
                 }
 
-                utterance.Trim();
 
                 if (printName == "도운" || printName == "주인공")
                 {
@@ -138,6 +137,8 @@ public class DialogueManager : MonoBehaviour
                     spriteName = SpriteName.Dowoon;
                 }
             }
+
+            utterance = utterance.Trim();
         }
     }
 
