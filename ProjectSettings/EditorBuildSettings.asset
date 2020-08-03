@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cook.unity
     guid: 0fcebcf2a625c1e4292aea2d42ab1592
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: bbe4b9165d5d0ab4cb646a173b31ccdd
   m_configObjects: {}

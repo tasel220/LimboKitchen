@@ -12,10 +12,9 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public int ID = 0;
     public int currentSceneNumber = 0;
-    
-    //public Dictionary<SpriteName, Sprite> SpriteDictionary = null;
-    public Dictionary<string, string> Emotion = null;
 
+    //public Dictionary<SpriteName, Sprite> SpriteDictionary = null;
+    [HideInInspector] public Dictionary<string, string> Emotion = null;
 
 
     private void Awake()
@@ -108,7 +107,6 @@ public class GameManager : MonoBehaviour
     }
     public IEnumerator DelayedSceneChange(GameSceneType name)
     {
-        Debug.Log(name);
         yield return new WaitForSeconds(0.1f);
         SceneManager.LoadScene(name.ToString());
     }
@@ -126,8 +124,8 @@ public class GameManager : MonoBehaviour
                 currentSceneNumber++;
                 sceneNumberIncrement = false;
             }
-            //Saver.SaveFile(this, 0);
-            Debug.Log(currentSceneNumber);
+            Saver.SaveFile(this, 0);
+            //Debug.Log(currentSceneNumber);
             var ta = Resources.Load<TextAsset>("Text/Scene" + currentSceneNumber.ToString());
             if(ta == null)
             {
@@ -152,7 +150,7 @@ public class GameManager : MonoBehaviour
                     {
                         case GameSceneType.Dialogue:
                             rawDialogue.Add(rows[i]);
-                            Debug.Log(rows[i]);
+                            //Debug.Log(rows[i]);
                             break;
                     }
                 }
@@ -160,14 +158,14 @@ public class GameManager : MonoBehaviour
            
         }
         var s = sceneQueue.Dequeue();
-        Debug.Log(s + " " + sceneQueue.Count);
         if (sceneQueue.Count == 0) sceneNumberIncrement = true;
         StartCoroutine(DelayedSceneChange(s));
     }
 
     public void ToTitle()
     {
-        StartCoroutine(DelayedSceneChange("Title"));
+        Debug.Log("to title");
+        instance.StartCoroutine(instance.DelayedSceneChange("Title"));
     }
 
     public void ExitGame()

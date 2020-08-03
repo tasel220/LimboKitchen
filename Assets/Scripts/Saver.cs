@@ -8,27 +8,29 @@ using UnityEngine;
 public static class Saver
 {
 
-    public static void SaveFile(GameManager gm, int id)
+    public static void SaveFile(GameManager gm, int id = 0)
     {
         PlayerPrefs.SetInt("file" + id, 1);
-        foreach (string name in Enum.GetNames(typeof(Parameters)))
-        {
-            Parameters sp = (Parameters)Enum.Parse(typeof(Parameters), name);
-        }
+        //foreach (string name in Enum.GetNames(typeof(Parameters)))
+        //{
+        //    Parameters sp = (Parameters)Enum.Parse(typeof(Parameters), name);
+        //}
 
         PlayerPrefs.SetInt("sceneNumber", gm.currentSceneNumber);
         PlayerPrefs.Save();
     }
 
-    public static bool LoadFile(ref GameManager dh, int id)
+    public static bool LoadFile(ref GameManager dh, int id = 0)
     {
         if (!PlayerPrefs.HasKey("file" + id)) return false;
 
-        foreach (string name in Enum.GetNames(typeof(Parameters)))
-        {
-            Parameters sp = (Parameters)Enum.Parse(typeof(Parameters), name);
-            //dh.SetStateParameter(sp, PlayerPrefs.GetInt(sp.ToString() + id));
-        }
+        //foreach (string name in Enum.GetNames(typeof(Parameters)))
+        //{
+        //    Parameters sp = (Parameters)Enum.Parse(typeof(Parameters), name);
+        //    //dh.SetStateParameter(sp, PlayerPrefs.GetInt(sp.ToString() + id));
+        //}
+
+        dh.currentSceneNumber = PlayerPrefs.GetInt("sceneNumber");
 
         return true;
     }
