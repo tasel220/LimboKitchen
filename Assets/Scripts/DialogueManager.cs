@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
+//using DG.Tweening;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -12,34 +12,40 @@ public class DialogueManager : MonoBehaviour
     List<Speech> speeches = new List<Speech>();
     private SpriteName charName;
 
-    public int SceneNumber;
+    //public int SceneNumber;
     public Image background;
     public Image leftSpeaker;
     public Image rightSpeaker;
     public Text printName;
     public Text utterance;
 
+    private bool allowNext = true;
 
-    private void Awake()
+
+    private void Start()
     {
         //leftSpeaker.sprite = GameManager.instance.SpriteDictionary[SpriteName.None];
         //rightSpeaker.sprite = GameManager.instance.SpriteDictionary[SpriteName.None];
         leftSpeaker.sprite = GetSprite(SpriteName.None);
         rightSpeaker.sprite = GetSprite(SpriteName.None);
-        ParseDialogue(Resources.Load<TextAsset>("Text/Scene" + SceneNumber.ToString()).text);
+        //ParseDialogue(Resources.Load<TextAsset>("Text/Scene" + SceneNumber.ToString()).text);
+        if(GameManager.instance != null)
+            ParseDialogue(GameManager.instance.rawDialogue);
         NextTalk();
     }
 
-    public void ParseDialogue(string rawDialogue)
+    //public void ParseDialogue(string rawDialogue)
+    public void ParseDialogue(List<string> rows)
     {
-        string[] rows = rawDialogue.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
+        //string[] rows = rawDialogue.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
 
         var f = rows[0].Split('\t');
         background.sprite = Resources.Load<Sprite>("Image/Background/" + f[0]);
+        //Debug.Log(f[0]);
         charName = (SpriteName) Enum.Parse(typeof(SpriteName), f[1]);
 
-        length = rows.Length - 1;
-        for(int i = 1; i < rows.Length; i++)
+        length = rows.Count - 1;
+        for(int i = 1; i < rows.Count; i++)
         {
             speeches.Add(new Speech(rows[i], charName));
         }
@@ -47,6 +53,7 @@ public class DialogueManager : MonoBehaviour
 
     public void NextTalk()
     {
+        if (!allowNext) return;
         if (++currentIndex >= length) EndTalk();
         else
         {
@@ -58,14 +65,30 @@ public class DialogueManager : MonoBehaviour
             else
                 leftSpeaker.sprite = GetSprite(curSpeech.spriteName, curSpeech.emotion);
             printName.text = curSpeech.printName;
-            utterance.text = "";
-            utterance.DOText(curSpeech.utterance, 0.5f);
+            utteranceToPrint = curSpeech.utterance;
+            StartCoroutine(Type());
+            //utterance.text = "";
+            //utterance.DOText(curSpeech.utterance, 0.5f);
         }
+    }
+
+    private string utteranceToPrint;
+    private IEnumerator Type()
+    {
+        allowNext = false;
+        utterance.text = "";
+        for(int i = 0; i < utteranceToPrint.Length; i++)
+        {
+            utterance.text += utteranceToPrint[i];
+            yield return new WaitForSeconds(0.01f);
+        }
+        allowNext = true;
     }
     
     public void EndTalk()
     {
-        Debug.Log("대화 끝");
+        GameManager.instance.rawDialogue.Clear();
+        GameManager.instance.Proceed();
     }
 
     struct Speech
@@ -100,8 +123,8 @@ public class DialogueManager : MonoBehaviour
                 string[] u = utterance.Split(')');
                 if(u.Length > 1)
                 {
-                    Debug.Log(u[0]);
-                    Debug.Log(u[1]);
+                    //Debug.Log(u[0]);
+                    //Debug.Log(u[1]);
                     utterance = u[1];
                     emotion = u[0].Trim();
                     emotion = emotion.Remove(0,1);

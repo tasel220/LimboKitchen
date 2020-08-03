@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,9 +10,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    [HideInInspector] public int ID;
+    [HideInInspector] public int ID = 0;
+    public int currentSceneNumber = 0;
+    
     //public Dictionary<SpriteName, Sprite> SpriteDictionary = null;
     public Dictionary<string, string> Emotion = null;
+
 
 
     private void Awake()
@@ -91,9 +95,83 @@ public class GameManager : MonoBehaviour
     //            SpriteDictionary.Add(sn, sp);
     //        }
     //    }
+
+        if(instance == this && (SceneManager.GetActiveScene().name != "Title" && SceneManager.GetActiveScene().name != "Ending"))
+        {
+            Proceed();
+        }
     }
+    public IEnumerator DelayedSceneChange(string name)
+    {
+        yield return new WaitForSeconds(0.1f);
+        SceneManager.LoadScene(name);
+    }
+    public IEnumerator DelayedSceneChange(GameSceneType name)
+    {
+        Debug.Log(name);
+        yield return new WaitForSeconds(0.1f);
+        SceneManager.LoadScene(name.ToString());
+    }
+
+    private bool sceneNumberIncrement = false;
+    private Queue<GameSceneType> sceneQueue = new Queue<GameSceneType>();
+    public List<string> rawDialogue;
     public void Proceed()
     {
+        if(sceneQueue.Count == 0)
+        {
+            if (sceneNumberIncrement)
+            {
+                Debug.Log("next scene setup");
+                currentSceneNumber++;
+                sceneNumberIncrement = false;
+            }
+            //Saver.SaveFile(this, 0);
+            Debug.Log(currentSceneNumber);
+            var ta = Resources.Load<TextAsset>("Text/Scene" + currentSceneNumber.ToString());
+            if(ta == null)
+            {
+                StartCoroutine(DelayedSceneChange(GameSceneType.Ending));
+                return;
+            }
+            else
+            {
+                var raw = ta.text;
+                string[] rows = raw.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
+                GameSceneType lst = GameSceneType.Clean;
+                for (int i = 0; i < rows.Length; i++)
+                {
+                    if (Enum.TryParse(rows[i], out GameSceneType result))
+                    {
+                        sceneQueue.Enqueue(result);
+                        lst = result;
+                        continue;
+                    }
 
+                    switch (lst)
+                    {
+                        case GameSceneType.Dialogue:
+                            rawDialogue.Add(rows[i]);
+                            Debug.Log(rows[i]);
+                            break;
+                    }
+                }
+            }
+           
+        }
+        var s = sceneQueue.Dequeue();
+        Debug.Log(s + " " + sceneQueue.Count);
+        if (sceneQueue.Count == 0) sceneNumberIncrement = true;
+        StartCoroutine(DelayedSceneChange(s));
+    }
+
+    public void ToTitle()
+    {
+        StartCoroutine(DelayedSceneChange("Title"));
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }

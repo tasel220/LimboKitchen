@@ -16,7 +16,7 @@ public static class Saver
             Parameters sp = (Parameters)Enum.Parse(typeof(Parameters), name);
         }
 
- 
+        PlayerPrefs.SetInt("sceneNumber", gm.currentSceneNumber);
         PlayerPrefs.Save();
     }
 

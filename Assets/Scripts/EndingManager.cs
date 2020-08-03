@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CookManager : MonoBehaviour
+public class EndingManager : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -15,7 +15,7 @@ public class CookManager : MonoBehaviour
     {
         if(Input.anyKeyDown)
         {
-            GameManager.instance.Proceed();
+            GameManager.instance.ToTitle();
 
         }
     }

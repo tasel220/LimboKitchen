@@ -7,4 +7,5 @@ using System.Threading.Tasks;
 public enum Parameters { a }
 public enum SceneTransitionType { FadeIO, }
 
-public enum SpriteName { None, BaekYum, Dowoon, Mina }
+public enum GameSceneType { Dialogue, Cook, Clean, Ending }
+public enum SpriteName { None, BaekYum, Dowoon, Grandma, Gion, Mina, Eugene, Unknown }

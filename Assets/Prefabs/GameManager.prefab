@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 192271294263669220}
   - component: {fileID: 1870162008937621961}
   m_Layer: 0
-  m_Name: Manager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,3 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d74e544709553940a584741f18e63d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 0
+  currentSceneNumber: 1
+  rawDialogue: []
