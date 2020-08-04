@@ -1400,7 +1400,7 @@ PrefabInstance:
     - target: {fileID: 1870162008937621961, guid: 7d6452e09e48d2b48ba8027427ce2acb,
         type: 3}
       propertyPath: currentSceneNumber
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d6452e09e48d2b48ba8027427ce2acb, type: 3}

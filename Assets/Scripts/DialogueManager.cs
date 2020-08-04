@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    private int currentIndex = 0; //1부터 세기
+    private int currentIndex = -1; //1부터 세기
     private int length = 0;
     List<Line> speeches = new List<Line>();
     private CharacterName charName;
@@ -24,6 +24,7 @@ public class DialogueManager : MonoBehaviour
 
     public GameObject pointerL;
     public GameObject pointerR;
+
 
     private bool allowNext = true;
 
@@ -43,39 +44,58 @@ public class DialogueManager : MonoBehaviour
     //public void ParseDialogue(string rawDialogue)
     public void ParseDialogue(List<string> rows)
     {
-        //string[] rows = rawDialogue.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
+        string[] f = rows[0].Split('\t');
 
-        background.sprite = Resources.Load<Sprite>("Image/Background/" + rows[0]);
+        background.sprite = Resources.Load<Sprite>("Image/Background/" + f[0]);
+
+        if (f.Length > 1) charName = (CharacterName)Enum.Parse(typeof(CharacterName), f[1]);
+
         length = rows.Count - 1;
         for(int i = 1; i < rows.Count; i++)
         {
-            speeches.Add(new Line(rows[i], charName));
+            var lastLine = new Line(rows[i], charName);
+            speeches.Add(lastLine);
+            Debug.Log(lastLine.lineType);
+            if(lastLine.lineType == LineType.enter && lastLine.spriteName != CharacterName.Dowoon)
+            {
+                charName = lastLine.spriteName;
+            }
         }
     }
 
     public void NextTalk()
     {
-        if (!allowNext) return;
+        if (!allowNext)
+        {
+            Debug.Log("아직"+currentIndex);
+            return;
+        }
         if (++currentIndex >= length) EndTalk();
         
         else
         {
+            Debug.Log(currentIndex);
             var curLine = speeches[currentIndex];
 
             utterance.raycastTarget = false;
             choice2.SetActive(false);
             utterance.alignment = TextAnchor.UpperLeft;
+            background.raycastTarget = true;
             //pointerL.SetActive(false);
             //pointerR.SetActive(false);
-            
-            switch(curLine.lineType)
+
+            Debug.Log(curLine.lineType);
+            switch (curLine.lineType)
             {
                 case LineType.speech:
                     if (curLine.right)
                         //rightSpeaker.sprite = GameManager.instance.SpriteDictionary[curSpeech.spriteName];
                         rightSpeaker.sprite = GetSprite(curLine.spriteName, curLine.emotion);
                     else
+                    {
                         leftSpeaker.sprite = GetSprite(curLine.spriteName, curLine.emotion);
+                        Debug.Log(curLine.spriteName +" "+curLine.utterance);
+                    }
                     printName.text = curLine.printName;
                     utteranceToPrint = curLine.utterance;
                     StartCoroutine(Type());
@@ -92,18 +112,20 @@ public class DialogueManager : MonoBehaviour
                     //utterance.DOText(curSpeech.utterance, 0.5f);
                     break;
                 case LineType.enter:
+                    Debug.Log(curLine.spriteName);
                     if (curLine.right)
                         //rightSpeaker.sprite = GameManager.instance.SpriteDictionary[curSpeech.spriteName];
                         rightSpeaker.sprite = GetSprite(curLine.spriteName, curLine.emotion);
                     else
                         leftSpeaker.sprite = GetSprite(curLine.spriteName, curLine.emotion);
-
+                    //charName = curLine.spriteName;
                     NextTalk();
                     break;
 
                 case LineType.exit:
                     //if (leftSpeaker.sprite.name.Contains(curLine.spriteName.ToString()))
                     leftSpeaker.sprite = GetSprite(CharacterName.None);
+                    Debug.Log(charName + " 퇴장");
                     //else if (rightSpeaker.sprite.name.Contains(curLine.spriteName.ToString()))
                     //    rightSpeaker.sprite = GetSprite(CharacterName.None);
 
@@ -116,10 +138,7 @@ public class DialogueManager : MonoBehaviour
                     choiceText2.text = curLine.choice2;
                     utterance.raycastTarget = true;
                     utterance.alignment = TextAnchor.UpperCenter;
-                    break;
-
-                case LineType.result:
-                    GameManager.instance.Result(curLine.result[choiceN - 1]);
+                    background.raycastTarget = false;
                     break;
             }
 
@@ -180,23 +199,24 @@ public class DialogueManager : MonoBehaviour
                 utterance = s[0];
                 utterance = utterance.Replace("/", "");
             }
-            else if (s[0] == "enter")
+            else if (s[0].Contains("enter"))
             {
                 lineType = LineType.enter;
 
-                if (printName == "도운" || printName == "주인공")
+                if (s[0] != "enter")
+                    s = s[0].Split(' ');
+                spriteName = (CharacterName) Enum.Parse(typeof(CharacterName), s[1]);
+                if (s.Length > 2) emotion = s[2];
+
+                if (spriteName == CharacterName.Dowoon)
                 {
                     right = true;
-                    spriteName = CharacterName.Dowoon;
-                }
-                else
-                {
-                    charName = (CharacterName)Enum.Parse(typeof(CharacterName), s[1]);
-                    if(s.Length > 2) emotion = s[2];
                 }
             }
-            else if(s[0] == "exit")
+            else if(s[0].Contains("exit"))
             {
+                if (s[0] != "exit")
+                    s = s[0].Split(' ');
                 lineType = LineType.exit;
             }
 
@@ -243,7 +263,6 @@ public class DialogueManager : MonoBehaviour
     {
         if (emotion == "")
         {
-            //Debug.Log(Resources.Load<Sprite>("Image/Character/" + charName));
             return Resources.Load<Sprite>("Image/Character/" + charName);
         }
 
@@ -256,7 +275,17 @@ public class DialogueManager : MonoBehaviour
     private int choiceN;
     public void Choice(int num)
     {
-        NextTalk();
-        choiceN = num;
+        var nextLine = speeches[currentIndex + 1];
+
+        if(nextLine.lineType == LineType.result)
+        {
+            choiceN = num;
+            GameManager.instance.Result(nextLine.result[choiceN - 1]);
+        }
+        else
+        {
+            NextTalk();
+
+        }
     }
 }
