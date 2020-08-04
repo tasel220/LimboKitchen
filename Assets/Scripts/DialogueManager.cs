@@ -9,8 +9,8 @@ public class DialogueManager : MonoBehaviour
 {
     private int currentIndex = 0; //1부터 세기
     private int length = 0;
-    List<Speech> speeches = new List<Speech>();
-    private SpriteName charName;
+    List<Line> speeches = new List<Line>();
+    private CharacterName charName;
 
     //public int SceneNumber;
     public Image background;
@@ -19,6 +19,12 @@ public class DialogueManager : MonoBehaviour
     public Text printName;
     public Text utterance;
 
+    public GameObject choice2;
+    public Text choiceText2;
+
+    public GameObject pointerL;
+    public GameObject pointerR;
+
     private bool allowNext = true;
 
 
@@ -26,8 +32,8 @@ public class DialogueManager : MonoBehaviour
     {
         //leftSpeaker.sprite = GameManager.instance.SpriteDictionary[SpriteName.None];
         //rightSpeaker.sprite = GameManager.instance.SpriteDictionary[SpriteName.None];
-        leftSpeaker.sprite = GetSprite(SpriteName.None);
-        rightSpeaker.sprite = GetSprite(SpriteName.None);
+        leftSpeaker.sprite = GetSprite(CharacterName.None);
+        rightSpeaker.sprite = GetSprite(CharacterName.None);
         //ParseDialogue(Resources.Load<TextAsset>("Text/Scene" + SceneNumber.ToString()).text);
         if(GameManager.instance != null)
             ParseDialogue(GameManager.instance.rawDialogue);
@@ -39,15 +45,11 @@ public class DialogueManager : MonoBehaviour
     {
         //string[] rows = rawDialogue.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
 
-        var f = rows[0].Split('\t');
-        background.sprite = Resources.Load<Sprite>("Image/Background/" + f[0]);
-        //Debug.Log(f[0]);
-        charName = (SpriteName) Enum.Parse(typeof(SpriteName), f[1]);
-
+        background.sprite = Resources.Load<Sprite>("Image/Background/" + rows[0]);
         length = rows.Count - 1;
         for(int i = 1; i < rows.Count; i++)
         {
-            speeches.Add(new Speech(rows[i], charName));
+            speeches.Add(new Line(rows[i], charName));
         }
     }
 
@@ -55,20 +57,72 @@ public class DialogueManager : MonoBehaviour
     {
         if (!allowNext) return;
         if (++currentIndex >= length) EndTalk();
+        
         else
         {
-            var curSpeech = speeches[currentIndex];
+            var curLine = speeches[currentIndex];
 
-            if (curSpeech.right)
-                //rightSpeaker.sprite = GameManager.instance.SpriteDictionary[curSpeech.spriteName];
-                rightSpeaker.sprite = GetSprite(curSpeech.spriteName, curSpeech.emotion);
-            else
-                leftSpeaker.sprite = GetSprite(curSpeech.spriteName, curSpeech.emotion);
-            printName.text = curSpeech.printName;
-            utteranceToPrint = curSpeech.utterance;
-            StartCoroutine(Type());
-            //utterance.text = "";
-            //utterance.DOText(curSpeech.utterance, 0.5f);
+            utterance.raycastTarget = false;
+            choice2.SetActive(false);
+            utterance.alignment = TextAnchor.UpperLeft;
+            //pointerL.SetActive(false);
+            //pointerR.SetActive(false);
+            
+            switch(curLine.lineType)
+            {
+                case LineType.speech:
+                    if (curLine.right)
+                        //rightSpeaker.sprite = GameManager.instance.SpriteDictionary[curSpeech.spriteName];
+                        rightSpeaker.sprite = GetSprite(curLine.spriteName, curLine.emotion);
+                    else
+                        leftSpeaker.sprite = GetSprite(curLine.spriteName, curLine.emotion);
+                    printName.text = curLine.printName;
+                    utteranceToPrint = curLine.utterance;
+                    StartCoroutine(Type());
+                    //utterance.text = "";
+                    //utterance.DOText(curSpeech.utterance, 0.5f);
+                    break;
+
+                case LineType.narration:
+
+                    printName.text = curLine.printName;
+                    utteranceToPrint = curLine.utterance;
+                    StartCoroutine(Type());
+                    //utterance.text = "";
+                    //utterance.DOText(curSpeech.utterance, 0.5f);
+                    break;
+                case LineType.enter:
+                    if (curLine.right)
+                        //rightSpeaker.sprite = GameManager.instance.SpriteDictionary[curSpeech.spriteName];
+                        rightSpeaker.sprite = GetSprite(curLine.spriteName, curLine.emotion);
+                    else
+                        leftSpeaker.sprite = GetSprite(curLine.spriteName, curLine.emotion);
+
+                    NextTalk();
+                    break;
+
+                case LineType.exit:
+                    //if (leftSpeaker.sprite.name.Contains(curLine.spriteName.ToString()))
+                    leftSpeaker.sprite = GetSprite(CharacterName.None);
+                    //else if (rightSpeaker.sprite.name.Contains(curLine.spriteName.ToString()))
+                    //    rightSpeaker.sprite = GetSprite(CharacterName.None);
+
+                    NextTalk();
+                    break;
+
+                case LineType.choice:
+                    choice2.SetActive(true);
+                    utterance.text = curLine.choice1;
+                    choiceText2.text = curLine.choice2;
+                    utterance.raycastTarget = true;
+                    utterance.alignment = TextAnchor.UpperCenter;
+                    break;
+
+                case LineType.result:
+                    GameManager.instance.Result(curLine.result[choiceN - 1]);
+                    break;
+            }
+
         }
     }
 
@@ -91,40 +145,83 @@ public class DialogueManager : MonoBehaviour
         GameManager.instance.Proceed();
     }
 
-    struct Speech
+    struct Line
     {
         public string printName;
-        public SpriteName spriteName;
+        public CharacterName spriteName;
         public string emotion;
         public string utterance;
         public bool right;
 
-        public Speech(string row, SpriteName charName)
+        public LineType lineType;
+
+        public string choice1;
+        public string choice2;
+
+        public string[] result;
+
+        public Line(string row, CharacterName charName)
         {
             char[] trimmers = { ':', '\t' };
             string[] s = row.Split(trimmers);
             right = false;
             spriteName = charName;
             emotion = "";
+            utterance = "";
+            printName = "";
+            choice1 = "";
+            choice2 = "";
+            result = new string[] { "", ""};
 
-            if (s[0].Contains("/"))
+            s[0] = s[0].Trim();
+            if (s[0].StartsWith("/"))
             {
-                printName = "";
-                //spriteName = SpriteName.None;
+                lineType = LineType.narration;
                 utterance = s[0];
-                utterance = utterance.Replace("/", " ");
-                //Debug.Log(utterance);
+                utterance = utterance.Replace("/", "");
             }
+            else if (s[0] == "enter")
+            {
+                lineType = LineType.enter;
+
+                if (printName == "도운" || printName == "주인공")
+                {
+                    right = true;
+                    spriteName = CharacterName.Dowoon;
+                }
+                else
+                {
+                    charName = (CharacterName)Enum.Parse(typeof(CharacterName), s[1]);
+                    if(s.Length > 2) emotion = s[2];
+                }
+            }
+            else if(s[0] == "exit")
+            {
+                lineType = LineType.exit;
+            }
+
+            else if(s[0] == "choice")
+            {
+                lineType = LineType.choice;
+                choice1 = s[1].Trim();
+                choice2 = s[2].Trim();
+            }
+            
+            else if (s[0] == "result")
+            {
+                lineType = LineType.result;
+                result[0] = s[1];
+                result[1] = s[2];
+            }
+
             else
             {
+                lineType = LineType.speech;
                 printName = s[0].Trim();
-                //spriteName = (SpriteName)Enum.Parse(typeof(SpriteName), s[0].Trim());
                 utterance = s[1];
                 string[] u = utterance.Split(')');
                 if(u.Length > 1)
                 {
-                    //Debug.Log(u[0]);
-                    //Debug.Log(u[1]);
                     utterance = u[1];
                     emotion = u[0].Trim();
                     emotion = emotion.Remove(0,1);
@@ -134,7 +231,7 @@ public class DialogueManager : MonoBehaviour
                 if (printName == "도운" || printName == "주인공")
                 {
                     right = true;
-                    spriteName = SpriteName.Dowoon;
+                    spriteName = CharacterName.Dowoon;
                 }
             }
 
@@ -142,9 +239,13 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    private Sprite GetSprite(SpriteName charName, string emotion = "")
+    private Sprite GetSprite(CharacterName charName, string emotion = "")
     {
-        if(emotion == "") return Resources.Load<Sprite>("Image/Character/" + charName);
+        if (emotion == "")
+        {
+            //Debug.Log(Resources.Load<Sprite>("Image/Character/" + charName));
+            return Resources.Load<Sprite>("Image/Character/" + charName);
+        }
 
         emotion = GameManager.instance.Emotion[emotion];
         Sprite s = Resources.Load<Sprite>("Image/Character/" + charName + "_" + emotion);
@@ -152,4 +253,10 @@ public class DialogueManager : MonoBehaviour
         return s;
     }
 
+    private int choiceN;
+    public void Choice(int num)
+    {
+        NextTalk();
+        choiceN = num;
+    }
 }

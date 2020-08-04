@@ -1,0 +1,8 @@
+Dialogue
+Restaurant	Mina
+/ 가게 문이 열리는 소리가 들린다. /
+도운 : ‘손님인가?’
+도운 : 어서 오세요!
+미나 : 아저씨 민트초코에 대해 어떻게 생각해요?
+choice	최악이야. 왜 자진해서 치약을 먹는 거지?	민초만세.
+result	Dislike	Like

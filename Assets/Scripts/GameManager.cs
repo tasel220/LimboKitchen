@@ -168,6 +168,14 @@ public class GameManager : MonoBehaviour
         instance.StartCoroutine(instance.DelayedSceneChange("Title"));
     }
 
+    public void Result(string result)
+    {
+        rawDialogue.Clear();
+        var t = Resources.Load<TextAsset>("Text/" + result).text;
+        rawDialogue.AddRange(t.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None));
+        StartCoroutine(DelayedSceneChange(GameSceneType.Dialogue));
+    }
+
     public void ExitGame()
     {
         Application.Quit();
