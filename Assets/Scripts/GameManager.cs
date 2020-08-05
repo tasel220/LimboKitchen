@@ -81,6 +81,7 @@ public class GameManager : MonoBehaviour
             Emotion.Add("슬픈 미소", "sadSmile");
             Emotion.Add("분노한", "angry");
             Emotion.Add("결심한", "determined");
+            Emotion.Add("슬픈", "sad");
         }
         #endregion
 
