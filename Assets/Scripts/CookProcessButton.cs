@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CookProcessButton : MonoBehaviour
 {
     public CookProcess type;
-    private string[] names = { "볶기", "끓이기", "튀기기", "찌기", "굽기", "오븐" };
+    private string[] names = { "끓이기", "굽기/튀기기", "굽기", "생식" };
 
     private void Start()
     {

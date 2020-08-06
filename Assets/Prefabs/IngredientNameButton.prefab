@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7920299287941343703}
   - component: {fileID: 7920299287941343702}
   - component: {fileID: 7920299287941343697}
-  - component: {fileID: 6808152197259055800}
+  - component: {fileID: 4274376465147834616}
   m_Layer: 5
-  m_Name: IngredientButton
+  m_Name: IngredientNameButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,19 +118,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7920299287941343702}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6808152197259055800}
-        m_MethodName: Open
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &6808152197259055800
+      m_Calls: []
+--- !u!114 &4274376465147834616
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,10 +128,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7920299287941343699}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a20d8f8e24a19f34183197e56f2a1246, type: 3}
+  m_Script: {fileID: 11500000, guid: 79c0bd0af11e87a46a3c0a808ca66d39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  ingredientName: 0
 --- !u!1 &7920299288961238488
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,7 +198,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 80
+    m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0

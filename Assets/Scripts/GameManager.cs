@@ -10,15 +10,20 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public string originScene;
+
     [HideInInspector] public int ID = 0;
     public int currentSceneNumber = 0;
 
     //public Dictionary<SpriteName, Sprite> SpriteDictionary = null;
     [HideInInspector] public Dictionary<string, string> Emotion = null;
 
+    public List<Recipe> recipes = new List<Recipe>();
+
 
     private void Awake()
     {
+        originScene = SceneManager.GetActiveScene().name;
         #region singleton
         DontDestroyOnLoad(gameObject);
 
@@ -85,18 +90,26 @@ public class GameManager : MonoBehaviour
         }
         #endregion
 
-    //    if (SpriteDictionary == null)
-    //    {
-    //        SpriteDictionary = new Dictionary<SpriteName, Sprite>();
-    //        foreach (string name in System.Enum.GetNames(typeof(SpriteName)))
-    //        {
-    //            SpriteName sn = (SpriteName)System.Enum.Parse(typeof(SpriteName), name);
-    //            Sprite sp = Resources.Load<Sprite>("Image/Character/" + name);
-    //            SpriteDictionary.Add(sn, sp);
-    //        }
-    //    }
+        #region recipe
+        string[] rawRecipe = Resources.Load<TextAsset>("Text/Recipe").text.Split(new[] {"\r\n", "\n" }, StringSplitOptions.None);
+        for(int i = 0; i < rawRecipe.Length; i++)
+        {
+            recipes.Add(new Recipe(rawRecipe[i].Split('\t')));
+        }
+        #endregion
 
-        if(instance == this && (SceneManager.GetActiveScene().name != "Title" && SceneManager.GetActiveScene().name != "Ending"))
+        //    if (SpriteDictionary == null)
+        //    {
+        //        SpriteDictionary = new Dictionary<SpriteName, Sprite>();
+        //        foreach (string name in System.Enum.GetNames(typeof(SpriteName)))
+        //        {
+        //            SpriteName sn = (SpriteName)System.Enum.Parse(typeof(SpriteName), name);
+        //            Sprite sp = Resources.Load<Sprite>("Image/Character/" + name);
+        //            SpriteDictionary.Add(sn, sp);
+        //        }
+        //    }
+
+        if (instance == this && (SceneManager.GetActiveScene().name == "Dialogue"))
         {
             Proceed();
         }
@@ -111,18 +124,25 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         SceneManager.LoadScene(name.ToString());
     }
-
-    private bool sceneNumberIncrement = false;
+    //private void Update()
+    //{
+    //    if(!sceneNumberIncrement)
+    //        Debug.Log(instance.sceneNumberIncrement);
+    //}
+    [SerializeField] private bool sceneNumberIncrement = false;
     private Queue<GameSceneType> sceneQueue = new Queue<GameSceneType>();
     public List<string> rawDialogue;
     public void Proceed()
     {
+        //Debug.Log("proceed" + sceneQueue.Count);
         if(sceneQueue.Count == 0)
         {
-            if (sceneNumberIncrement)
+            if (instance.sceneNumberIncrement)
             {
                 Debug.Log("next scene setup");
+                Debug.Log(currentSceneNumber);
                 currentSceneNumber++;
+                Debug.Log(currentSceneNumber);
                 sceneNumberIncrement = false;
             }
             Saver.SaveFile(this, 0);
@@ -135,6 +155,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
+                rawDialogue.Clear();
                 var raw = ta.text;
                 string[] rows = raw.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
                 GameSceneType lst = GameSceneType.Clean;
@@ -159,8 +180,9 @@ public class GameManager : MonoBehaviour
            
         }
         var s = sceneQueue.Dequeue();
+        Debug.Log(s);
         if (sceneQueue.Count == 0) sceneNumberIncrement = true;
-        StartCoroutine(DelayedSceneChange(s));
+        instance.StartCoroutine(instance.DelayedSceneChange(s));
     }
 
     public void ToTitle()
@@ -169,7 +191,7 @@ public class GameManager : MonoBehaviour
         instance.StartCoroutine(instance.DelayedSceneChange("Title"));
     }
 
-    public void Result(string result)
+    public void ChoiceResult(string result)
     {
         rawDialogue.Clear();
         var t = Resources.Load<TextAsset>("Text/" + result).text;
@@ -180,5 +202,34 @@ public class GameManager : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+}
+
+public struct Recipe
+{
+    public FoodName result;
+    public string name;
+    public CookProcess process;
+    public Dictionary<IngredientType1, IngredientName> ingredients;
+    public bool strong;
+
+    public Recipe(string[] row)
+    {
+        result = (FoodName)Enum.Parse(typeof(FoodName), row[0]);
+
+        name = row[1];
+
+        process = (CookProcess)Enum.Parse(typeof(CookProcess), row[2]);
+
+        ingredients = new Dictionary<IngredientType1, IngredientName>();
+        for(int i = 3; i < 6; i++)
+        {
+            ingredients[(IngredientType1) i - 3] = (IngredientName) Enum.Parse(typeof(IngredientName), row[i]);
+        }
+        strong = false;
+        if (row.Length > 6)
+        {
+            strong = (row[6] == "strong");
+        }
     }
 }

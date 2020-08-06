@@ -11,7 +11,12 @@ public enum GameSceneType { Dialogue, Cook, Clean, Ending }
 public enum CharacterName { None, BaekYum, Dowoon, Grandma, Gion, Mina, Eugene, Unknown }
 public enum LineType { speech, enter, exit, choice, narration, result }
 
-public enum IngredientType1 { meat, grain, processed, seafood, fruVeg, condiment }
-public enum IngredientType2 { chicken, beef, pork, venison, lamb, rice, wheat, barley, fish, squid, apple, cucumber, salt, pepper, miwon }
+public enum IngredientType1 { meat, seafood, vegetable }
 
-public enum CookProcess { none = -1, stirFry, boil, fry, steam, grill, oven }
+public enum IngredientName { none = 0, chicken, pork, beef, egg, pollack, salmon, shrimp, clam, carrot, onion, potato, tomato, eggplant, any }
+//public enum Meat { none = 0, chicken, pork, beef, egg }
+//public enum Seafood { none = 0, pollack, salmon, shrimp, clam }
+//public enum Vegetable { none = 0, carrot, onion, potato, tomato }
+public enum FoodName { roastChicken, porkBarbecue, roastBeef, roastEgg, roastPollack, roastSalmon, roastShrimp, roastClam, roastPotato, samhap, friedChicken, friedPork, friedShrimp, friedEggplant, friedOnion, frenchFries, tomatoEgg, scrambledEgg, eggRoll, friedCombo, chickenSoup, boiledPork, beefStew, tomatoEggSoup, pollackSoup, spicyStew, clamSoup, vegetableSoup, jjampong, rawMeat, rawSalmon, salad, trash }
+
+public enum CookProcess { none = -1, boil, fry, grill, raw }

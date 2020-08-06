@@ -22,6 +22,9 @@ public class DialogueManager : MonoBehaviour
     public GameObject choice2;
     public Text choiceText2;
 
+    public float textDelay;
+
+
     public GameObject pointerL;
     public GameObject pointerR;
 
@@ -44,6 +47,8 @@ public class DialogueManager : MonoBehaviour
     //public void ParseDialogue(string rawDialogue)
     public void ParseDialogue(List<string> rows)
     {
+        speeches.Clear();
+
         string[] f = rows[0].Split('\t');
 
         background.sprite = Resources.Load<Sprite>("Image/Background/" + f[0]);
@@ -55,7 +60,6 @@ public class DialogueManager : MonoBehaviour
         {
             var lastLine = new Line(rows[i], charName);
             speeches.Add(lastLine);
-            Debug.Log(lastLine.lineType);
             if(lastLine.lineType == LineType.enter && lastLine.spriteName != CharacterName.Dowoon)
             {
                 charName = lastLine.spriteName;
@@ -70,11 +74,16 @@ public class DialogueManager : MonoBehaviour
             Debug.Log("아직"+currentIndex);
             return;
         }
-        if (++currentIndex >= length) EndTalk();
-        
-        else
+        if (++currentIndex >= length)
         {
             Debug.Log(currentIndex);
+
+            EndTalk();
+        }
+
+        else
+        {
+            //Debug.Log(currentIndex);
             var curLine = speeches[currentIndex];
 
             utterance.raycastTarget = false;
@@ -88,13 +97,13 @@ public class DialogueManager : MonoBehaviour
             switch (curLine.lineType)
             {
                 case LineType.speech:
+                    //Debug.Log(curLine.utterance);
                     if (curLine.right)
                         //rightSpeaker.sprite = GameManager.instance.SpriteDictionary[curSpeech.spriteName];
                         rightSpeaker.sprite = GetSprite(curLine.spriteName, curLine.emotion);
                     else
                     {
                         leftSpeaker.sprite = GetSprite(curLine.spriteName, curLine.emotion);
-                        Debug.Log(curLine.spriteName +" "+curLine.utterance);
                     }
                     printName.text = curLine.printName;
                     utteranceToPrint = curLine.utterance;
@@ -153,7 +162,7 @@ public class DialogueManager : MonoBehaviour
         for(int i = 0; i < utteranceToPrint.Length; i++)
         {
             utterance.text += utteranceToPrint[i];
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(textDelay);
         }
         allowNext = true;
     }
@@ -280,7 +289,7 @@ public class DialogueManager : MonoBehaviour
         if(nextLine.lineType == LineType.result)
         {
             choiceN = num;
-            GameManager.instance.Result(nextLine.result[choiceN - 1]);
+            GameManager.instance.ChoiceResult(nextLine.result[choiceN - 1]);
         }
         else
         {

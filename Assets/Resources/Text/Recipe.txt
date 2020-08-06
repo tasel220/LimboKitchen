@@ -1,0 +1,6 @@
+roastChicken	로스트 치킨	grill	chicken	none	any	strong
+porkBarbecue	돼지 바비큐	grill	pork	none	any	strong
+roastBeef	로스트 비프	grill	beef	none	any	weak
+roastEgg	구운 계란	grill	egg	none	any	weak
+roastPollack	대구 구이	grill	none	pollack	any	weak
+rawSalmon	연어 회	raw	none	salmon	none
