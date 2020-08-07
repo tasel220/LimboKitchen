@@ -22,6 +22,7 @@ public class CookManager : MonoBehaviour
     public GameObject ResultPanel;
     public Image resultImage;
     public Text resultText;
+    public Text resultButtonText;
 
     public GameObject marker;
 
@@ -41,6 +42,7 @@ public class CookManager : MonoBehaviour
 
         CookingPanel.SetActive(false);
         ResultPanel.SetActive(false);
+        IngredientNameButton.instances.Clear();
     }
 
     private float elapsedTime = 0;
@@ -105,10 +107,8 @@ public class CookManager : MonoBehaviour
 
         foreach(Recipe r in GameManager.instance.recipes)
         {
-            Debug.Log("일치 체크: " + r.result);
             if (r.process != selectedCookProcess)
             {
-                Debug.Log("공정 불일치");
                 continue;
             }
             if ((elapsedTime > maxCookTime / 2) != r.strong)
@@ -133,7 +133,6 @@ public class CookManager : MonoBehaviour
 
             if (different)
             {
-                Debug.Log("재료 불일치");
                 continue;
             }
 
@@ -144,10 +143,25 @@ public class CookManager : MonoBehaviour
 
         ResultPanel.SetActive(true);
         resultImage.sprite = Resources.Load<Sprite>("Image/Food/" + result.ToString());
+        if (result != FoodName.trash)
+        {
+            resultButtonText.text = "확인";
+        }
+        else
+        {
+            resultButtonText.text = "재시도";
+        }
     }
 
-    public void Proceed()
+    public void Confirm()
     {
-        GameManager.instance.Proceed();
+        if (result == FoodName.trash)
+        {
+            StartCoroutine(GameManager.instance.DelayedSceneChange(GameSceneType.Cook));
+        }
+        else
+        {
+            GameManager.instance.Proceed();
+        }
     }
 }

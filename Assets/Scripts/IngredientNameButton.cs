@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class IngredientNameButton : MonoBehaviour
 {
-    private static List<IngredientNameButton> instances = new List<IngredientNameButton>();
+    public static List<IngredientNameButton> instances = new List<IngredientNameButton>();
 
     public IngredientType1 type;
     public IngredientName ingredientName;

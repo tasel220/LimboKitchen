@@ -994,6 +994,7 @@ MonoBehaviour:
   ResultPanel: {fileID: 1030498850}
   resultImage: {fileID: 1223452015}
   resultText: {fileID: 294155384}
+  resultButtonText: {fileID: 2130316256}
   marker: {fileID: 1416904824}
   result: 32
 --- !u!4 &635625051
@@ -4292,7 +4293,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 635625050}
-        m_MethodName: Proceed
+        m_MethodName: Confirm
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
