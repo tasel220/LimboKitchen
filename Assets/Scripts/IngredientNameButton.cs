@@ -21,12 +21,12 @@ public class IngredientNameButton : MonoBehaviour
     {
         image = GetComponent<Image>();
         MarkDeselect();
-        if (!instances.Contains(this))
-            instances.Add(this);
     }
 
     private void Start()
     {
+        if (!instances.Contains(this))
+            instances.Add(this);
         int x = transform.GetSiblingIndex();
 
         switch (type)

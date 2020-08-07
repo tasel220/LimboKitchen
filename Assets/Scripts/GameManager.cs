@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public Dictionary<string, string> Emotion = null;
 
     public List<Recipe> recipes = new List<Recipe>();
+    public FoodName cookedFood = FoodName.trash;
 
 
     private void Awake()

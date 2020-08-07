@@ -45,6 +45,12 @@ public class CookManager : MonoBehaviour
         IngredientNameButton.instances.Clear();
     }
 
+
+    private void Start()
+    {
+        GameManager.instance.cookedFood = FoodName.trash;
+    }
+
     private float elapsedTime = 0;
     private bool cooking = false;
     // Update is called once per frame
@@ -161,6 +167,7 @@ public class CookManager : MonoBehaviour
         }
         else
         {
+            GameManager.instance.cookedFood = result;
             GameManager.instance.Proceed();
         }
     }

@@ -17,6 +17,7 @@ public static class Saver
         //}
 
         PlayerPrefs.SetInt("sceneNumber", gm.currentSceneNumber);
+        PlayerPrefs.SetString("cookedFood", gm.cookedFood.ToString());
         PlayerPrefs.Save();
     }
 
@@ -31,7 +32,7 @@ public static class Saver
         //}
 
         dh.currentSceneNumber = PlayerPrefs.GetInt("sceneNumber");
-
+        dh.cookedFood = (FoodName) Enum.Parse(typeof(FoodName), PlayerPrefs.GetString("cookedFood"));
         return true;
     }
 

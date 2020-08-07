@@ -1,0 +1,7 @@
+Dialogue
+Restaurant
+enter	Eugene
+enter	Dowoon
+도운 : 음식 나왔습니다.
+reaction	ReactionExample
+도운 : 맛있게 드세요

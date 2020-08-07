@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
     private int currentIndex = -1; //1부터 세기
-    private int length = 0;
     List<Line> speeches = new List<Line>();
     private CharacterName charName;
 
@@ -55,7 +54,6 @@ public class DialogueManager : MonoBehaviour
 
         if (f.Length > 1) charName = (CharacterName)Enum.Parse(typeof(CharacterName), f[1]);
 
-        length = rows.Count - 1;
         for(int i = 1; i < rows.Count; i++)
         {
             var lastLine = new Line(rows[i], charName);
@@ -63,6 +61,39 @@ public class DialogueManager : MonoBehaviour
             if(lastLine.lineType == LineType.enter && lastLine.spriteName != CharacterName.Dowoon)
             {
                 charName = lastLine.spriteName;
+            }
+            else if(lastLine.lineType == LineType.reaction)
+            {
+                speeches.Remove(lastLine);
+                Debug.Log(GameManager.instance.cookedFood);
+                var reactionRows = Resources.Load<TextAsset>("Text/" + lastLine.reactionFile).text.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
+                bool foodFound = false;
+                for(int k = 0; k < reactionRows.Length; k++)
+                {
+                    var splitRow = reactionRows[k].Split(new[] { '\t', ':' });
+                    var splitRowList = new List<string>(splitRow);
+                    Debug.Log(splitRow[0]);
+                    if(Enum.TryParse(splitRow[0], out FoodName fn))
+                    {
+                        if (foodFound) break;
+                        if (reactionRows[k].Contains(GameManager.instance.cookedFood.ToString()))
+                        foodFound = true;
+                    }
+                    else if(splitRow[0] == "else")
+                    {
+                        if (foodFound) break;
+                        foodFound = true;
+                    }
+                    else if(foodFound)
+                    {
+                        lastLine = new Line(reactionRows[k], charName);
+                        speeches.Add(lastLine);
+                        if (lastLine.lineType == LineType.enter && lastLine.spriteName != CharacterName.Dowoon)
+                        {
+                            charName = lastLine.spriteName;
+                        }
+                    }
+                }
             }
         }
     }
@@ -74,10 +105,8 @@ public class DialogueManager : MonoBehaviour
             Debug.Log("아직"+currentIndex);
             return;
         }
-        if (++currentIndex >= length)
+        if (++currentIndex >= speeches.Count)
         {
-            Debug.Log(currentIndex);
-
             EndTalk();
         }
 
@@ -93,7 +122,6 @@ public class DialogueManager : MonoBehaviour
             //pointerL.SetActive(false);
             //pointerR.SetActive(false);
 
-            Debug.Log(curLine.lineType);
             switch (curLine.lineType)
             {
                 case LineType.speech:
@@ -121,7 +149,6 @@ public class DialogueManager : MonoBehaviour
                     //utterance.DOText(curSpeech.utterance, 0.5f);
                     break;
                 case LineType.enter:
-                    Debug.Log(curLine.spriteName);
                     if (curLine.right)
                         //rightSpeaker.sprite = GameManager.instance.SpriteDictionary[curSpeech.spriteName];
                         rightSpeaker.sprite = GetSprite(curLine.spriteName, curLine.emotion);
@@ -188,6 +215,8 @@ public class DialogueManager : MonoBehaviour
 
         public string[] result;
 
+        public string reactionFile;
+
         public Line(string row, CharacterName charName)
         {
             char[] trimmers = { ':', '\t' };
@@ -200,6 +229,7 @@ public class DialogueManager : MonoBehaviour
             choice1 = "";
             choice2 = "";
             result = new string[] { "", ""};
+            reactionFile = "";
 
             s[0] = s[0].Trim();
             if (s[0].StartsWith("/"))
@@ -243,6 +273,12 @@ public class DialogueManager : MonoBehaviour
                 result[1] = s[2];
             }
 
+            else if (s[0] == "reaction")
+            {
+                lineType = LineType.reaction;
+                reactionFile = s[1];
+            }
+
             else
             {
                 lineType = LineType.speech;
@@ -263,7 +299,6 @@ public class DialogueManager : MonoBehaviour
                     spriteName = CharacterName.Dowoon;
                 }
             }
-
             utterance = utterance.Trim();
         }
     }
