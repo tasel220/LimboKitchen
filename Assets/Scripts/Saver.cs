@@ -15,8 +15,8 @@ public static class Saver
         //{
         //    Parameters sp = (Parameters)Enum.Parse(typeof(Parameters), name);
         //}
-
-        PlayerPrefs.SetInt("sceneNumber", gm.currentSceneNumber);
+        if(PlayerPrefs.GetInt("sceneNumber") < gm.currentSceneNumber)
+            PlayerPrefs.SetInt("sceneNumber", gm.currentSceneNumber);
         PlayerPrefs.SetString("cookedFood", gm.cookedFood.ToString());
         PlayerPrefs.Save();
     }

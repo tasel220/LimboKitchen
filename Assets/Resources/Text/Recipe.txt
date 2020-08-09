@@ -7,7 +7,7 @@ roastSalmon	연어 구이	grill	none	salmon	any	weak
 roastShrimp	새우 구이	grill	none	shrimp	any	weak
 roastClam	조개 구이	grill	none	clam	any	weak
 roastPotato	구운 감자	grill	none	none	potato	strong
-samhap	삼합	pork	grill	shrimp	onion	strong
+samhap	삼합	grill	pork	shrimp	onion	strong
 friedChicken	프라이드 치킨	fry	chicken	none	any	strong
 friedPork	탕수육	fry	pork	none	any	strong
 friedShrimp	새우 튀김	fry	egg	shrimp	any
