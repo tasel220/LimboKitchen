@@ -1,4 +1,0 @@
-roastChicken	porkBarbecue	roastBeef	samhap	friedChicken	friedPork
-유진 : 우왕 고기다
-else
-유진 : (웃으며) 솜씨가 대단하군요.

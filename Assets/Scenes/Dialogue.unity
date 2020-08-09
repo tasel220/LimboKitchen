@@ -1400,7 +1400,7 @@ PrefabInstance:
     - target: {fileID: 1870162008937621961, guid: 7d6452e09e48d2b48ba8027427ce2acb,
         type: 3}
       propertyPath: currentSceneNumber
-      value: 90
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1870162008937621961, guid: 7d6452e09e48d2b48ba8027427ce2acb,
         type: 3}
@@ -2278,7 +2278,7 @@ MonoBehaviour:
   utterance: {fileID: 30255164}
   choice2: {fileID: 1857990349}
   choiceText2: {fileID: 1922058427}
-  textDelay: 0.015
+  textDelay: 0.017
   pointerL: {fileID: 0}
   pointerR: {fileID: 0}
 --- !u!4 &1921925491

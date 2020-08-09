@@ -1,0 +1,7 @@
+roastChicken	porkBarbecue	roastBeef		roastPollack	roastShrimp	roastClam	roastPotato	friedCombo	pollackSoup	vegetableSoup	jjampong	rawMeat
+유진 : (웃으며) 솜씨가 대단하군요.
+유진 : 저는 요리에는 영 소질이 없어서...
+유진 : (웃으며) 정말 부럽습니다.
+도운 : 감사합니다.
+else
+유진 : 감사합니다.

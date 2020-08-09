@@ -1994,6 +1994,11 @@ PrefabInstance:
       propertyPath: sceneNumberIncrement
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1870162008937621961, guid: 7d6452e09e48d2b48ba8027427ce2acb,
+        type: 3}
+      propertyPath: currentSceneNumber
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d6452e09e48d2b48ba8027427ce2acb, type: 3}
 --- !u!1 &1775471654
