@@ -1,8 +1,4 @@
 roastChicken	porkBarbecue	roastBeef	samhap	friedChicken	friedPork
 유진 : 우왕 고기다
-enter Gion
-기온 : 우왕 고기다
-rawSalmon
-유진 : 우왕 연어회다
 else
-유진 : 잘 먹겠습니다
+유진 : (웃으며) 솜씨가 대단하군요.
