@@ -1,0 +1,6 @@
+jjampong	vegetableSoup	clamSoup	spicyStew	pollackSoup	tomatoEggSoup	beefStew	chickenSoup	samhap	
+??? : (개운한) 하...
+도운 : 음식이 입에 맞지 않으신가요?
+??? : 아니. 괜찮아. 오히려 덕분에 술기운이 좀 가신 것 같군.
+else
+??? : (찡그린) 고마워.

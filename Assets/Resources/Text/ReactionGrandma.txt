@@ -1,0 +1,5 @@
+vegetableSoup	clamSoup	pollackSoup	tomatoEggSoup	boiledPork	eggRoll	roastPotato	roastEgg	salad	roastClam	roastPollack	chickenSoup
+??? : (웃으며) 주인장이 직원 고르는 안목 하나는 훌륭하신 것 같구먼.
+도운 : 칭찬 감사합니다.
+else
+??? : 고맙네.
