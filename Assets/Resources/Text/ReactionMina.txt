@@ -1,0 +1,4 @@
+friedChicken	friedPork	friedShrimp	friedOnion	frenchFries	friedCombo	beefStew	roastSalmon	eggRoll	vegetableSoup	roastChicken	roastBeef	
+미나 : 그런대로 먹을 만해요. 아저씨.
+else
+미나 : 괜찮아요, 아저씨.

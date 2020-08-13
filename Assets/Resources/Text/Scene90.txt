@@ -1,7 +1,0 @@
-Dialogue
-Restaurant
-enter	Eugene
-enter	Dowoon
-도운 : 어서오세요
-유진 : 밥 줘
-Cook
