@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public List<Recipe> recipes = new List<Recipe>();
     public FoodName cookedFood = FoodName.trash;
 
+    public List<CharacterName> impressedPeople = new List<CharacterName>();
 
     private void Awake()
     {

@@ -78,11 +78,20 @@ public class DialogueManager : MonoBehaviour
                         if (foodFound) break;
                         if (reactionRows[k].Contains(GameManager.instance.cookedFood.ToString()))
                         foodFound = true;
+                        if (!GameManager.instance.impressedPeople.Contains(charName))
+                        {
+                            GameManager.instance.impressedPeople.Add(charName);
+                        }
                     }
                     else if(splitRow[0] == "else")
                     {
+                        
                         if (foodFound) break;
                         foodFound = true;
+                        if (GameManager.instance.impressedPeople.Contains(charName))
+                        {
+                            GameManager.instance.impressedPeople.Remove(charName);
+                        }
                     }
                     else if(foodFound)
                     {

@@ -18,6 +18,7 @@ public static class Saver
         if(PlayerPrefs.GetInt("sceneNumber") < gm.currentSceneNumber)
             PlayerPrefs.SetInt("sceneNumber", gm.currentSceneNumber);
         PlayerPrefs.SetString("cookedFood", gm.cookedFood.ToString());
+        SaveList("impressedPeople", gm.impressedPeople);
         PlayerPrefs.Save();
     }
 
@@ -33,6 +34,7 @@ public static class Saver
 
         dh.currentSceneNumber = PlayerPrefs.GetInt("sceneNumber");
         dh.cookedFood = (FoodName) Enum.Parse(typeof(FoodName), PlayerPrefs.GetString("cookedFood"));
+        dh.impressedPeople = LoadList("impressedPeople");
         return true;
     }
 
@@ -59,7 +61,7 @@ public static class Saver
         }
     }
 
-    private static void SaveList(string listName, List<int> list)
+    private static void SaveList(string listName, List<CharacterName> list)
     {
         string data = "";
         for (int i = 0; i < list.Count; i++)
@@ -81,13 +83,13 @@ public static class Saver
     }
 
 
-    private static List<float> LoadList(string listName)
+    private static List<CharacterName> LoadList(string listName)
     {
-        List<float> list = new List<float>();
+        List<CharacterName> list = new List<CharacterName>();
         string[] values = PlayerPrefs.GetString(listName).Split(new[] { "\r\n", "\n" }, StringSplitOptions.None); ;
         for (int i = 0; i < values.Length - 1; i++)
         {
-            list.Add(int.Parse(values[i]));
+            list.Add((CharacterName) Enum.Parse(typeof(CharacterName), values[i]));
         }
         return list;
     }
