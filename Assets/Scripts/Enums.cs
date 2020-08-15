@@ -13,7 +13,7 @@ public enum LineType { speech, enter, exit, choice, narration, result, reaction 
 
 public enum IngredientType1 { meat, seafood, vegetable }
 
-public enum IngredientName { none = 0, chicken, pork, beef, egg, pollack, salmon, shrimp, clam, carrot, onion, potato, tomato, eggplant, any }
+public enum IngredientName { none = 0, chicken, pork, beef, egg, pollack, salmon, shrimp, clam, carrot, onion, potato, tomato, any }
 //public enum Meat { none = 0, chicken, pork, beef, egg }
 //public enum Seafood { none = 0, pollack, salmon, shrimp, clam }
 //public enum Vegetable { none = 0, carrot, onion, potato, tomato }

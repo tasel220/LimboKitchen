@@ -34,7 +34,7 @@ public class CookManager : MonoBehaviour
 
         IngredientGroups.Add(IngredientType1.meat, new IngredientName[] { IngredientName.chicken, IngredientName.pork, IngredientName.beef, IngredientName.egg });
         IngredientGroups.Add(IngredientType1.seafood, new IngredientName[] { IngredientName.pollack, IngredientName.salmon, IngredientName.shrimp, IngredientName.clam });
-        IngredientGroups.Add(IngredientType1.vegetable, new IngredientName[] { IngredientName.carrot, IngredientName.onion, IngredientName.potato, IngredientName.tomato, IngredientName.eggplant });
+        IngredientGroups.Add(IngredientType1.vegetable, new IngredientName[] { IngredientName.carrot, IngredientName.onion, IngredientName.potato, IngredientName.tomato});
 
         SelectedIngredient.Add(IngredientType1.meat, IngredientName.none);
         SelectedIngredient.Add(IngredientType1.seafood, IngredientName.none);

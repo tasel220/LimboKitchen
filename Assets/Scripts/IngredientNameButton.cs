@@ -15,7 +15,7 @@ public class IngredientNameButton : MonoBehaviour
   
     private string[] names_meat = { "닭", "돼지", "소", "계란" };
     private string[] names_seafood = { "대구", "연어", "새우", "바지락" };
-    private string[] names_vegetable = { "당근", "양파", "감자", "토마토", "가지" };
+    private string[] names_vegetable = { "당근", "양파", "감자", "토마토"};
 
     private void Awake()
     {
