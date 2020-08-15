@@ -157,9 +157,8 @@ public class GameManager : MonoBehaviour
             }
             Saver.SaveFile(this, 0);
             //Debug.Log(currentSceneNumber);
-            string path = language == Language.Korean ? "Text/Scene" : "Text/English/Scene";
-            var ta_kor = Resources.Load<TextAsset>(path + currentSceneNumber.ToString());
-            if(ta_kor == null)
+            var ta = Resources.Load<TextAsset>("Text/Scene" + currentSceneNumber.ToString());
+            if(ta == null)
             {
                 StartCoroutine(DelayedSceneChange(GameSceneType.Ending));
                 return;
@@ -167,7 +166,7 @@ public class GameManager : MonoBehaviour
             else
             {
                 rawDialogue.Clear();
-                var raw = ta_kor.text;
+                var raw = ta.text;
                 string[] rows = raw.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
                 GameSceneType lst = GameSceneType.Clean;
                 for (int i = 0; i < rows.Length; i++)
