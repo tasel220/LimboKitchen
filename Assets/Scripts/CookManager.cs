@@ -1,9 +1,9 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CookManager : MonoBehaviour
+public class CookManager : MonoBehaviour, IManager
 {
     public static CookManager instance;
     public float maxCookTime;
@@ -26,7 +26,11 @@ public class CookManager : MonoBehaviour
 
     public GameObject marker;
 
+    public Text combine;
+    public Text clearSelection;
+    public Text finish;
 
+    private FoodName Result;
 
     private void Awake()
     {
@@ -49,6 +53,8 @@ public class CookManager : MonoBehaviour
     private void Start()
     {
         GameManager.instance.cookedFood = FoodName.trash;
+        GameManager.instance.currentSceneManager = this;
+        ChangeLanguage(GameManager.instance.language);
     }
 
     private float elapsedTime = 0;
@@ -105,7 +111,8 @@ public class CookManager : MonoBehaviour
         SelectedIngredient[IngredientType1.vegetable] = IngredientName.none;
     }
 
-    public FoodName result = FoodName.trash;
+    //public FoodName result = FoodName.trash;
+    public Recipe resultRecipe = new Recipe(new string[] { });
     public void Finish()
     {
         cooking = false;
@@ -141,34 +148,80 @@ public class CookManager : MonoBehaviour
             {
                 continue;
             }
-
-            result = r.result;
-            resultText.text = r.name + " 완성!";
+            resultRecipe = r;
+            
             break;
         }
 
+        SetResultText();
+
         ResultPanel.SetActive(true);
-        resultImage.sprite = Resources.Load<Sprite>("Image/Food/" + result.ToString());
-        if (result != FoodName.trash)
-        {
-            resultButtonText.text = "확인";
-        }
-        else
-        {
-            resultButtonText.text = "재시도";
-        }
+        resultImage.sprite = Resources.Load<Sprite>("Image/Food/" + resultRecipe.result.ToString());
+        
     }
 
     public void Confirm()
     {
-        if (result == FoodName.trash)
+        if (resultRecipe.result == FoodName.trash)
         {
             StartCoroutine(GameManager.instance.DelayedSceneChange(GameSceneType.Cook));
         }
         else
         {
-            GameManager.instance.cookedFood = result;
+            GameManager.instance.cookedFood = resultRecipe.result;
             GameManager.instance.Proceed();
         }
     }
+
+    public void ChangeLanguage(Language selectedLanguage)
+    {
+        
+        languageChange?.Invoke();
+        switch(selectedLanguage)
+        {
+            case Language.Korean:
+                combine.text = "조합";
+                clearSelection.text = "재선택";
+                finish.text = "완성!";
+                break;
+            case Language.English:
+                combine.text = "Combine";
+                clearSelection.text = "Clear Selection";
+                finish.text = "Finish";
+                break;
+        }
+        SetResultText();
+    }
+    private void SetResultText()
+    {
+        switch (GameManager.instance.language)
+        {
+            case Language.Korean:
+                resultText.text = resultRecipe.name + " 완성!";
+                break;
+            case Language.English:
+                resultText.text = "You made " + resultRecipe.name + "!";
+                break;
+        }
+        if (resultRecipe.result == FoodName.trash)
+            switch (GameManager.instance.language)
+            {
+                case Language.Korean:
+                    resultText.text = "음식물 쓰레기 완성!";
+                    break;
+                case Language.English:
+                    resultText.text = "You made trash!";
+                    break;
+            }
+
+        if (resultRecipe.result != FoodName.trash)
+        {
+            resultButtonText.text = GameManager.instance.language == Language.Korean ? "확인" : "Confirm";
+        }
+        else
+        {
+            resultButtonText.text = GameManager.instance.language == Language.Korean ? "재시도" : "Retry";
+        }
+    }
+    public event Action languageChange;
 }

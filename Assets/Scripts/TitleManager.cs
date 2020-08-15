@@ -3,15 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TitleManager : MonoBehaviour
+public class TitleManager : MonoBehaviour, IManager
 {
     public bool openAllChapters;
 
     public static TitleManager instance;
 
+    public Text[] buttonTexts;
+    private string[] koreanButtonNames = { "새로운 시작", "챕터 선택", "만든 사람", "종료" };
+    private string[] englishButtonNames = { "New Game", "Select Chapter", "Credit", "Quit" };
+
     private void Awake()
     {
         instance = this;
+    }
+
+    private void Start()
+    {
+        GameManager.instance.currentSceneManager = this;
+        ChangeLanguage(GameManager.instance.language);
     }
 
     public void Continue()
@@ -38,5 +48,20 @@ public class TitleManager : MonoBehaviour
         //GameManager.instance.currentSceneNumber = 1;
         PlayerPrefs.SetInt("sceneNumber", 1);
         GameManager.instance.Proceed();
+    }
+
+    public void ChangeLanguage(Language selectedLanguage)
+    {
+        if(selectedLanguage == Language.English)
+            for(int i = 0; i < buttonTexts.Length; i++)
+            {
+                buttonTexts[i].text = englishButtonNames[i];
+            }
+
+        else
+            for (int i = 0; i < buttonTexts.Length; i++)
+            {
+                buttonTexts[i].text = koreanButtonNames[i];
+            }
     }
 }

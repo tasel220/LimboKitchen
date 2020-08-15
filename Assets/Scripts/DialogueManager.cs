@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 //using DG.Tweening;
 
-public class DialogueManager : MonoBehaviour
+public class DialogueManager : MonoBehaviour, IManager
 {
     private int currentIndex = -1; //1부터 세기
     List<Line> speeches = new List<Line>();
@@ -33,6 +33,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
+        GameManager.instance.currentSceneManager = this;
         //leftSpeaker.sprite = GameManager.instance.SpriteDictionary[SpriteName.None];
         //rightSpeaker.sprite = GameManager.instance.SpriteDictionary[SpriteName.None];
         leftSpeaker.sprite = GetSprite(CharacterName.None);
@@ -340,5 +341,10 @@ public class DialogueManager : MonoBehaviour
             NextTalk();
 
         }
+    }
+
+    public void ChangeLanguage(Language selectedLangugae)
+    {
+
     }
 }

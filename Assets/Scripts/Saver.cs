@@ -19,6 +19,7 @@ public static class Saver
             PlayerPrefs.SetInt("sceneNumber", gm.currentSceneNumber);
         PlayerPrefs.SetString("cookedFood", gm.cookedFood.ToString());
         SaveList("impressedPeople", gm.impressedPeople);
+
         PlayerPrefs.Save();
     }
 
@@ -35,7 +36,14 @@ public static class Saver
         dh.currentSceneNumber = PlayerPrefs.GetInt("sceneNumber");
         dh.cookedFood = (FoodName) Enum.Parse(typeof(FoodName), PlayerPrefs.GetString("cookedFood"));
         dh.impressedPeople = LoadList("impressedPeople");
+        
         return true;
+    }
+
+    public static void SetLanguage(Language language)
+    {
+        PlayerPrefs.SetString("language", language.ToString());
+        PlayerPrefs.Save();
     }
 
     private static void SaveDictionary<Key, Value>(string dictionaryName, Dictionary<Key, Value> dictionary)

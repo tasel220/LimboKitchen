@@ -10,16 +10,16 @@ roastPotato	구운 감자	grill	none	none	potato	strong
 samhap	삼합	grill	pork	shrimp	onion	strong
 friedChicken	프라이드 치킨	fry	chicken	none	any	strong
 friedPork	탕수육	fry	pork	none	any	strong
-friedShrimp	새우 튀김	fry	egg	shrimp	any
-friedShrimp	새우 튀김	fry	none	shrimp	any
-friedOnion	양파 튀김	fry	egg	none	onion
-friedOnion	양파 튀김	fry	none	none	onion
-frenchFries	감자 튀김	fry	egg	none	potato
-frenchFries	감자 튀김	fry	none	none	potato
-tomatoEgg	토마토 계란 볶음	fry	egg	none	tomato
-scrambledEgg	스크램블 에그	fry	egg	none	none
-eggRoll	계란말이	fry	egg	none	carrot
-eggRoll	계란말이	fry	egg	none	onion
+friedShrimp	새우 튀김	fry	egg	shrimp	any	weak
+friedShrimp	새우 튀김	fry	none	shrimp	any	weak
+friedOnion	양파 튀김	fry	egg	none	onion	weak
+friedOnion	양파 튀김	fry	none	none	onion	weak
+frenchFries	감자 튀김	fry	egg	none	potato	weak
+frenchFries	감자 튀김	fry	none	none	potato	weak
+tomatoEgg	토마토 계란 볶음	fry	egg	none	tomato	weak
+scrambledEgg	스크램블 에그	fry	egg	none	none	weak
+eggRoll	계란말이	fry	egg	none	carrot	weak
+eggRoll	계란말이	fry	egg	none	onion	weak
 friedCombo	모듬튀김	fry	chicken	shrimp	onion	strong
 friedCombo	모듬튀김	fry	pork	shrimp	onion	strong
 friedCombo	모듬튀김	fry	chicken	shrimp	potato	strong
@@ -28,20 +28,20 @@ chickenSoup	치킨 수프	boil	chicken	none	any	strong
 boiledPork	수육	boil	pork	none	onion	strong
 boiledPork	수육	boil	pork	none	none	strong
 beefStew	비프 스튜	boil	beef	none	any	strong
-tomatoEggSoup	토계탕	boil	egg	none	tomato
-pollackSoup	대구탕	boil	none	pollack	potato
-pollackSoup	대구탕	boil	none	pollack	onion
+tomatoEggSoup	토계탕	boil	egg	none	tomato	weak
+pollackSoup	대구탕	boil	none	pollack	potato	weak
+pollackSoup	대구탕	boil	none	pollack	onion	weak
 spicyStew	매운탕	boil	none	shrimp	carrot	strong
 spicyStew	매운탕	boil	none	shrimp	onion	strong
 spicyStew	매운탕	boil	none	shrimp	potato	strong
-clamSoup	조개 수프	boil	none	clam	carrot
-clamSoup	조개 수프	boil	none	clam	potato
-clamSoup	조개 수프	boil	none	clam	onion
-vegetableSoup	야채 수프	boil	none	none	any
+clamSoup	조개 수프	boil	none	clam	carrot	weak
+clamSoup	조개 수프	boil	none	clam	potato	weak
+clamSoup	조개 수프	boil	none	clam	onion	weak
+vegetableSoup	야채 수프	boil	none	none	any	weak
 jjampong	짬뽕	boil	pork	clam	carrot	strong
 jjampong	짬뽕	boil	pork	clam	onion	strong
-rawMeat	육회	raw	beef	none	none
-rawSalmon	연어 회	raw	none	salmon	none
-salad	샐러드	raw	none	none	carrot
-salad	샐러드	raw	none	none	onion
-salad	샐러드	raw	none	none	tomato
+rawMeat	육회	raw	beef	none	none	weak
+rawSalmon	연어 회	raw	none	salmon	none	weak
+salad	샐러드	raw	none	none	carrot	weak
+salad	샐러드	raw	none	none	onion	weak
+salad	샐러드	raw	none	none	tomato	weak

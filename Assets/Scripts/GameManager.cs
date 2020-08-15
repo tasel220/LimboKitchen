@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
 
     public List<CharacterName> impressedPeople = new List<CharacterName>();
 
+    public IManager currentSceneManager;
+    public Language language;
+
     private void Awake()
     {
         originScene = SceneManager.GetActiveScene().name;
@@ -111,6 +114,11 @@ public class GameManager : MonoBehaviour
         //        }
         //    }
 
+        if(PlayerPrefs.HasKey("language"))
+        {
+            language = (Language) Enum.Parse(typeof(Language), PlayerPrefs.GetString("language"));
+        }
+
         if (instance == this && (SceneManager.GetActiveScene().name == "Dialogue"))
         {
             Proceed();
@@ -187,6 +195,7 @@ public class GameManager : MonoBehaviour
         instance.StartCoroutine(instance.DelayedSceneChange(s));
     }
 
+
     public void ToTitle()
     {
         Debug.Log("to title");
@@ -205,33 +214,54 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public static void SetLanguage(Language lang)
+    {
+        instance.language = lang;
+        instance.currentSceneManager.ChangeLanguage(lang);
+        Saver.SetLanguage(lang);
+    }
 }
 
 public struct Recipe
 {
     public FoodName result;
-    public string name;
+    private Dictionary<Language, string> Names;
+    public string name { get { return Names[GameManager.instance.language]; } }
     public CookProcess process;
     public Dictionary<IngredientType1, IngredientName> ingredients;
     public bool strong;
 
     public Recipe(string[] row)
     {
-        result = (FoodName)Enum.Parse(typeof(FoodName), row[0]);
-
-        name = row[1];
-
-        process = (CookProcess)Enum.Parse(typeof(CookProcess), row[2]);
-
+        Names = new Dictionary<Language, string>();
         ingredients = new Dictionary<IngredientType1, IngredientName>();
-        for(int i = 3; i < 6; i++)
-        {
-            ingredients[(IngredientType1) i - 3] = (IngredientName) Enum.Parse(typeof(IngredientName), row[i]);
-        }
         strong = false;
-        if (row.Length > 6)
+        if (row.Length > 0)
         {
+            result = (FoodName)Enum.Parse(typeof(FoodName), row[0]);
+
+            Names[Language.Korean] = row[1];
+            if (row.Length > 7) Names[Language.English] = row[7];
+            else
+            {
+                Names[Language.English] = result.ToString();
+            }
+
+            process = (CookProcess)Enum.Parse(typeof(CookProcess), row[2]);
+
+            for (int i = 3; i < 6; i++)
+            {
+                ingredients[(IngredientType1)i - 3] = (IngredientName)Enum.Parse(typeof(IngredientName), row[i]);
+            }
             strong = (row[6] == "strong");
+        }
+        else
+        {
+            Names[Language.English] = "trash";
+            Names[Language.Korean] = "음식물 쓰레기";
+            result = FoodName.trash;
+            process = CookProcess.none;
         }
     }
 }

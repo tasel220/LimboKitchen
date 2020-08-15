@@ -20,3 +20,5 @@ public enum IngredientName { none = 0, chicken, pork, beef, egg, pollack, salmon
 public enum FoodName { roastChicken, porkBarbecue, roastBeef, roastEgg, roastPollack, roastSalmon, roastShrimp, roastClam, roastPotato, samhap, friedChicken, friedPork, friedShrimp, friedOnion, frenchFries, tomatoEgg, scrambledEgg, eggRoll, friedCombo, chickenSoup, boiledPork, beefStew, tomatoEggSoup, pollackSoup, spicyStew, clamSoup, vegetableSoup, jjampong, rawMeat, rawSalmon, salad, trash }
 
 public enum CookProcess { none = -1, boil, fry, grill, raw }
+
+public enum Language { Korean, English }
