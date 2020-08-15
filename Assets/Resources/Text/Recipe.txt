@@ -12,8 +12,6 @@ friedChicken	프라이드 치킨	fry	chicken	none	any	strong
 friedPork	탕수육	fry	pork	none	any	strong
 friedShrimp	새우 튀김	fry	egg	shrimp	any
 friedShrimp	새우 튀김	fry	none	shrimp	any
-friedEggplant	가지 튀김	fry	egg	none	eggplant
-friedEggplant	가지 튀김	fry	none	none	eggplant
 friedOnion	양파 튀김	fry	egg	none	onion
 friedOnion	양파 튀김	fry	none	none	onion
 frenchFries	감자 튀김	fry	egg	none	potato
@@ -22,8 +20,6 @@ tomatoEgg	토마토 계란 볶음	fry	egg	none	tomato
 scrambledEgg	스크램블 에그	fry	egg	none	none
 eggRoll	계란말이	fry	egg	none	carrot
 eggRoll	계란말이	fry	egg	none	onion
-friedCombo	모듬튀김	fry	chicken	shrimp	eggplant	strong
-friedCombo	모듬튀김	fry	pork	shrimp	eggplant	strong
 friedCombo	모듬튀김	fry	chicken	shrimp	onion	strong
 friedCombo	모듬튀김	fry	pork	shrimp	onion	strong
 friedCombo	모듬튀김	fry	chicken	shrimp	potato	strong
