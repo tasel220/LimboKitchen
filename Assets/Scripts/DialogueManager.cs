@@ -39,8 +39,10 @@ public class DialogueManager : MonoBehaviour, IManager
         leftSpeaker.sprite = GetSprite(CharacterName.None);
         rightSpeaker.sprite = GetSprite(CharacterName.None);
         //ParseDialogue(Resources.Load<TextAsset>("Text/Scene" + SceneNumber.ToString()).text);
-        if(GameManager.instance != null)
+        if (GameManager.instance != null)
+        {
             ParseDialogue(GameManager.instance.rawDialogue);
+        }
         NextTalk();
     }
 
@@ -212,10 +214,18 @@ public class DialogueManager : MonoBehaviour, IManager
 
     struct Line
     {
-        public string printName;
+        public Dictionary<Language, string> PrintName;
+        public string printName
+        {
+            get { return PrintName[GameManager.instance.language]; }
+        }
         public CharacterName spriteName;
         public string emotion;
-        public string utterance;
+        public Dictionary<Language, string> Utterance;
+        public string utterance
+        {
+            get { return Utterance[GameManager.instance.language]; }
+        }
         public bool right;
 
         public LineType lineType;
@@ -227,15 +237,15 @@ public class DialogueManager : MonoBehaviour, IManager
 
         public string reactionFile;
 
-        public Line(string row, CharacterName charName)
+        public Line(string row, CharacterName charName, string row_eng = "")
         {
             char[] trimmers = { ':', '\t' };
             string[] s = row.Split(trimmers);
             right = false;
             spriteName = charName;
             emotion = "";
-            utterance = "";
-            printName = "";
+            Utterance = new Dictionary<Language, string>();
+            PrintName = new Dictionary<Language, string>();
             choice1 = "";
             choice2 = "";
             result = new string[] { "", ""};
@@ -245,8 +255,8 @@ public class DialogueManager : MonoBehaviour, IManager
             if (s[0].StartsWith("/"))
             {
                 lineType = LineType.narration;
-                utterance = s[0];
-                utterance = utterance.Replace("/", "");
+                Utterance[Language.Korean] = s[0];
+                Utterance[Language.Korean] = Utterance[Language.Korean].Replace("/", "");
             }
             else if (s[0].Contains("enter"))
             {
@@ -292,24 +302,24 @@ public class DialogueManager : MonoBehaviour, IManager
             else
             {
                 lineType = LineType.speech;
-                printName = s[0].Trim();
-                utterance = s[1];
-                string[] u = utterance.Split(')');
+                PrintName[Language.Korean] = s[0].Trim();
+                Utterance[Language.Korean] = s[1];
+                string[] u = Utterance[Language.Korean].Split(')');
                 if(u.Length > 1)
                 {
-                    utterance = u[1];
+                    Utterance[Language.Korean] = u[1];
                     emotion = u[0].Trim();
                     emotion = emotion.Remove(0,1);
                 }
 
 
-                if (printName == "도운" || printName == "주인공")
+                if (PrintName[Language.Korean] == "도운" || PrintName[Language.Korean] == "주인공")
                 {
                     right = true;
                     spriteName = CharacterName.Dowoon;
                 }
             }
-            utterance = utterance.Trim();
+            Utterance[Language.Korean] = Utterance[Language.Korean].Trim();
         }
     }
 
