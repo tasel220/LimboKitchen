@@ -319,8 +319,9 @@ public class DialogueManager : MonoBehaviour, IManager
         {
             return Resources.Load<Sprite>("Image/Character/" + charName);
         }
+        if(GameManager.instance.Emotion.ContainsKey(emotion))
+            emotion = GameManager.instance.Emotion[emotion];
 
-        emotion = GameManager.instance.Emotion[emotion];
         Sprite s = Resources.Load<Sprite>("Image/Character/" + charName + "_" + emotion);
         if(s == null) return Resources.Load<Sprite>("Image/Character/" + charName);
         return s;
