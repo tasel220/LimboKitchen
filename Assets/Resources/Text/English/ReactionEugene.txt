@@ -1,0 +1,7 @@
+roastChicken	porkBarbecue	roastBeef		roastPollack	roastShrimp	roastClam	roastPotato	friedCombo	pollackSoup	vegetableSoup	jjampong	rawMeat
+Eugene : (웃으며) You're a great cook!
+Eugene : (머쓱한) I'm not good at cooking at all...
+Eugene : (웃으며) I’m so jealous of you.
+Dawn : Thank you, sir.
+else
+Eugene : Thank you.

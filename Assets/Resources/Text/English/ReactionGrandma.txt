@@ -1,0 +1,5 @@
+vegetableSoup	clamSoup	pollackSoup	tomatoEggSoup	boiledPork	eggRoll	roastPotato	roastEgg	salad	roastClam	roastPollack	chickenSoup
+??? : (웃으며) I think the owner has a good eye.
+도운 : Thank you for the compliment.
+else
+??? : That looks delicious.

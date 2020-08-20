@@ -1,0 +1,19 @@
+Clean
+Dialogue
+Restaurant	Gion
+/ 가게 문이 열리는 소리가 들린다. /
+??? : Hey! Anybody here?
+Dawn : Wellco...
+??? : Don't be ridiculous, just give me some water!
+Dawn : Pardon?
+??? : (험악한) WATER!!
+??? : (험악한) You don't understand?
+Dawn : Okay. Please wait a moment.
+??? : (찡그린) My head is about to explode...
+??? : Is there any hot soup here? To relieve hangovers.
+Dawn : You must have drunk too much the day before.
+??? : It’s nothing to do with you. Just give me a w...
+??? : (찡그린) ...
+Dawn : Sir?
+??? : (구토)
+Dawn : !

@@ -1,0 +1,33 @@
+Clean
+Dialogue
+Restaurant
+/ 가게 문이 열리는 소리가 들린다. /
+Dawn : ‘The guests?’
+Dawn : Good afternoon, sir.
+enter	Eugene
+Dawn : How many are with you?
+??? : It's just me. No other people.
+Dawn : Please come this way.
+??? : I like the atmosphere here, it's cozy.
+Dawn : Thank you.
+Dawn : What would you like to order?
+??? : (고민하는) Hmm...
+Dawn : ...
+??? : (고민하는) ...
+Dawn : ... 
+choice	May I give you a little time to think about this?	Sir...?
+??? :  (머쓱한) Oh, I'm sorry.
+??? : This is the first time I've been to a restaurant like this by myself, so it's very awkward.
+??? : It's been a long time since I had such a personal time because I was pressed for work.
+Dawn : If you don't mind, may I ask what you do?
+??? : I'm a police officer. It's already been more than a decade since I started this job.
+Eugene : By the way, what's your name? My name is Eugene.
+Dawn : I'm Dawn. So, you are the cop.
+Eugene : (웃으며) You may not believe cause I'm such an ordinary-looking man, but I'm an old hand in this field.
+Dawn : Then, you're here on vacation?
+Eugene : It's like that. I've never used a real vacation so far because of the lack of people on duty.
+Eugene : (생각난 듯) Oh, I haven't decided on the menu yet.
+Dawn : If it's hard to decide, can I make whatever you want?
+Eugene : Would that be okay with you?
+Dawn : Of course. Please hold for a moment.
+Cook

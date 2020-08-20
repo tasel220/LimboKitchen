@@ -1,0 +1,12 @@
+Dialogue
+Room	BaekYum
+Ms. Back : (아픈) Use this room while you stay here. I haven't used it for a while, but it's still clean.
+enter	Dowoon
+Dawn : Thank you. I owe you so much.
+Ms. Back : (아픈 미소) Nothing of the kind. You owe me nothing, dear.
+Ms. Back : (아픈) Start working from tomorrow and just get some rest today.
+exit	BaekYum
+Dawn : It's such a relief to meet a good person like her.
+Dawn : I was a little surprised at first though...
+Dawn : It's so tired even though I didn't do anything.
+Dawn : I should go to bed now.
