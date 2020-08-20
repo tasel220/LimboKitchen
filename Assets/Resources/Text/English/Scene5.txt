@@ -1,0 +1,54 @@
+Dialogue
+Restaurant
+enter	Eugene
+Dawn : Here's your order.
+reaction	ReactionEugene
+Dawn : Come to think of it...
+choice	Did you come all this way here alone?	Didn't you come with your family?
+Eugene : My family says they still have some work to do. So I came here alone.
+Eugene : My wife is a high school teacher, and she seems to be busier this year.
+Dawn : I think so.
+Dawn : Now I understand what you meant by the fact that you haven't had a real vacation.
+Eugene : We hardly ever saw each other in our first term. Every day was like a war, especially until my child went to school.
+Eugene : (웃으며) It was amazing.
+Dawn : You have a child?
+Eugene : Already 9 years old. He went to his grandmother's house because he is on vacation these days. I heard that he already made friends in there.
+choice	You seem to love your family very much.	What a harmonious family.
+Eugene : (웃으며) Does it look like that?
+Eugene : Now we are used to our work and have some time to relax as our child grows up, but it was very hard at first.
+Eugene : (가라앉은) If you come back from the night shift and you're holding the baby, and you're half asleep, and you're doing the housework...
+Eugene : (가라앉은) Sometimes I thought I wanted to quit everything.
+Eugene : (가라앉은) I had a lot of regrets about choosing this job.
+Dawn : Why did you decide to become a police officer?	
+Eugene : Now that I think about it, I must have been vaguely longing for the job of police.
+Eugene : I thought I would have to be a cop at that time, but now I can't remember why.
+Eugene : (웃으며) So Is this a so-called young blood?
+Dawn : But you hold on to your dream after all.
+Eugene : That's because my family helped me a lot.
+Eugene : Especially, my wife kept supporting me. 
+Eugene : She must have been in a difficult situation for herself, but she recognized and listened to my concerns before anyone else.
+Eugene : Perhaps that's a reason why I don't care about the past I decided to become a police officer anymore.
+Eugene : It's purely because of her that I'm continuing this work now, regardless of the past.
+choice	It's so romantic.	You two seem to get along very well.
+Eugene : (웃으며) Not always.
+Eugene : In the early days of marriage, there were more cases of fighting because of disagreement.
+Eugene : We were both stubborn in our set of values and expectations.
+Eugene : Because of that, once we had an argument, we basically went into the Cold War for a few weeks.
+Dawn : That's incredible.
+Eugene : (웃으며) I think so, too. I don't know why I did that.
+Dawn : How's it going now?
+Eugene : A lot has changed since that happened.
+Eugene : Once there was a report that a drunkard carrying a knife was threatening citizens.
+Eugene : Fortunately, it didn't spread to a serious situation, but there were some injuries during the suppression process.
+Eugene : It wasn't such a big injury, but my wife seemed to be in a great shock.
+choice	I think I'll do the same goes for me.	Didn't you feel anything after all that happened?
+Eugene : (웃으며) I thought it was really nothing.
+Eugene : (슬픈 미소) And I was beginning to realize something as days went by. About the fact that the police are always exposed to various dangers.
+Eugene : (슬픈 미소) I understood why she reacted like that.
+Eugene : (슬픈 미소) Only then I realize how precious and grateful my daily life is with my loved ones.
+Eugene : (웃으며) So why do we have to fight each other stubbornly?
+Eugene : (생각난 듯) Oh, time really flies. I think I have to go now.
+Eugene : It was nice talking with you, Dawn.
+Dawn : It was nice to meet you, too.
+Eugene : (웃으며) If I get another chances, I'll come again.
+Dawn : Good bye.

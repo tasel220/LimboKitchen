@@ -1,0 +1,17 @@
+Restaurant
+enter	BaekYum
+Dawn : I'm going back.
+Ms. Back : (걱정스러운) The way back will be much longer and harder than it would have been to come here. Are you sure you're okay with that?
+Dawn : I'm okay.
+Ms. Back : (걱정스러운) If you think so...
+Ms. Back : (걱정스러운) Good luck. I hope you can get back safely.
+Dawn : Thank you. Goodbye, Ms. Back, until the day we meet again.
+/ 주인공이 숲으로 보이는 공간에서 걷고 있다. /
+: Everything feels strange. Was it like this when I came here?
+: Taking a deep breath, I feel like cold air makes my head clear.
+: I said I'd go back, but when I was about to leave, I felt uneasy.
+: Is there really anyone who wants me back?
+: What if something happens on the way?
+: All kinds of ominous imaginations follow one after another.
+: Well, maybe it will be alright. Even if it goes wrong, I know the consequences.
+: Thinking so, I began a long journey to go back home.

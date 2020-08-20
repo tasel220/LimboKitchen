@@ -1,0 +1,6 @@
+jjampong	vegetableSoup	clamSoup	spicyStew	pollackSoup	tomatoEggSoup	beefStew	chickenSoup	samhap	
+??? : (개운한) Ah...
+Dawn : It doesn't suit your taste?
+??? : No. It's fine. Rather, it seems that the hangover has been relieved.
+else
+??? : (찡그린) Thanks a lot.

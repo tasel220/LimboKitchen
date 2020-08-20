@@ -1,0 +1,20 @@
+Clean
+Dialogue
+Restaurant
+Dawn : Did I sleep too late last night? I'm a little tired.
+Dawn : Anyway, I think it's almost ready now.
+??? : What do you mean 'almost'?
+Dawn : !
+enter	Grandma
+Dawn : I'm sorry. I didn't recognize you.
+??? : (웃으며) Well, If you focus on one thing, you don't know what's going on around you.
+??? : Are you the owner of this place? You're a young boss.
+Dawn : I'm Dawn. The boss has an urgent business to attend to, so I'm taking care of this shop instead of her.
+??? : Is that so?
+??? : (유심히) ...
+Dawn : ...
+??? : (웃으며) Oh, I'm sorry to bother you.
+??? : Now that I've come this far anyway, I have to eat something.
+Dawn : What would you like, then?
+??? : I've never been to a restaurant like this before. I'd like something you're most confident about, please.
+Cook

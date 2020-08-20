@@ -1,0 +1,13 @@
+Dialogue
+Forest
+Main character : Oh, my. I can't see well because of the fog...
+/부스럭 거리는 효과음/
+Main character : What was that?
+Main character : Is anyone there?
+Main character : ...
+Main character : Did I hear wrong...?
+??? : Ugh...
+Main character : !
+enter	BaekYum
+??? : (험악한) Here... help me...
+Main character : AARGH!

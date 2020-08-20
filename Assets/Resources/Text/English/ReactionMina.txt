@@ -1,0 +1,4 @@
+friedChicken	friedPork	friedShrimp	friedOnion	frenchFries	friedCombo	beefStew	roastSalmon	eggRoll	vegetableSoup	roastChicken	roastBeef	
+Mina : Not bad, Uncle.
+else
+Mina : Um...

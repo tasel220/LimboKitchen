@@ -1,0 +1,12 @@
+Restaurant
+/도운이 컵을 집어든다. /
+/도운이 컵 안에 들어있는 액체를 마신다. /
+/화면이 어두워진다. /
+ : Unknown liquid flows down the throat. What flavor is this? Sweet or bitter? I feel strange.
+ : All the things I've been through are passing by at once. All happy and painful things are so close that I can reach them with my hands out.
+ : Numerous thoughts swallowed up at the tip of my tongue pour out stories that each of them has not told.
+ : It's so noisy that it's no use trying to plug my ears.
+ : Am I regretting now? If I say I'll go back, can I start again? Dreamy and faint as if in a dream. Before I knew it, it became quiet.
+/앞에 큰 강이 있다. 주변의 분위기는 신비롭다. /
+ : A large river appeared before me. I can't even remember where I am, even who I am, but somehow there seems to be an answer beyond this river.
+ : The temperature of the river at the tip of my toes feels warmer than I thought.
