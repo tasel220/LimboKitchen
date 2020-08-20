@@ -303,7 +303,7 @@ public class DialogueManager : MonoBehaviour, IManager
                 }
 
 
-                if (printName == "도운" || printName == "주인공")
+                if (printName == "도운" || printName == "주인공" || printName == "Main character")
                 {
                     right = true;
                     spriteName = CharacterName.Dowoon;
