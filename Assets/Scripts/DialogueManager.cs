@@ -67,7 +67,7 @@ public class DialogueManager : MonoBehaviour, IManager
             {
                 speeches.Remove(lastLine);
                 Debug.Log(GameManager.instance.cookedFood);
-                var reactionRows = Resources.Load<TextAsset>("Text/" + lastLine.reactionFile).text.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
+                var reactionRows = Resources.Load<TextAsset>(GameManager.instance.textPath + lastLine.reactionFile).text.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
                 bool foodFound = false;
                 for(int k = 0; k < reactionRows.Length; k++)
                 {
