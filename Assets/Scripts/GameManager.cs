@@ -26,6 +26,15 @@ public class GameManager : MonoBehaviour
     public IManager currentSceneManager;
     public Language language;
 
+    public string textPath
+    {
+        get
+        {
+            if (language == Language.Korean) return "Text/";
+            else return "Text/" + language.ToString() + "/";
+        }
+    }
+
     private void Awake()
     {
         originScene = SceneManager.GetActiveScene().name;
@@ -157,8 +166,8 @@ public class GameManager : MonoBehaviour
             }
             Saver.SaveFile(this, 0);
             //Debug.Log(currentSceneNumber);
-            string path = language == Language.Korean ? "Text/Scene" : "Text/English/Scene";
-            var ta_kor = Resources.Load<TextAsset>(path + currentSceneNumber.ToString());
+            
+            var ta_kor = Resources.Load<TextAsset>(textPath + currentSceneNumber.ToString());
             if(ta_kor == null)
             {
                 StartCoroutine(DelayedSceneChange(GameSceneType.Ending));
@@ -206,7 +215,7 @@ public class GameManager : MonoBehaviour
     public void ChoiceResult(string result)
     {
         rawDialogue.Clear();
-        var t = Resources.Load<TextAsset>("Text/" + result).text;
+        var t = Resources.Load<TextAsset>(textPath + result).text;
         rawDialogue.AddRange(t.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None));
         StartCoroutine(DelayedSceneChange(GameSceneType.Dialogue));
     }
