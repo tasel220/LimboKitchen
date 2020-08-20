@@ -167,7 +167,7 @@ public class GameManager : MonoBehaviour
             Saver.SaveFile(this, 0);
             //Debug.Log(currentSceneNumber);
             
-            var ta_kor = Resources.Load<TextAsset>(textPath + currentSceneNumber.ToString());
+            var ta_kor = Resources.Load<TextAsset>(textPath + "Scene" + currentSceneNumber.ToString());
             if(ta_kor == null)
             {
                 StartCoroutine(DelayedSceneChange(GameSceneType.Ending));
