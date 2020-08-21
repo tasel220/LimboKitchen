@@ -2,7 +2,7 @@ Dialogue
 Restaurant	BaekYum
 Main Character : Are you okay with the wound?
 ??? : (아픈 미소) Oh, It's really nothing, my child. But thank you for your good intentions.
-Main Character : Why did you get hurt like this?
+Main Character : How did you get hurt like this?
 ??? : (아픈) I was in a hurry to do something urgent, but I got caught in the root of the tree. On a slippery slope...
 ??? : (아픈) After that, my whole body ached and I couldn't move.
 Main Character : That could have been a real disaster.
@@ -10,7 +10,7 @@ Main Character : That could have been a real disaster.
 Main Character : I was lost in the fog. I couldn't even tell where I was on the map.
 ??? : (아픈) Can I take a look at that?
 ??? : (아픈 의미심장한) Let me see...
-??? : (아픈) I think you've come to the right place. From here, all you have to do is follow the trail behind this snack bar.
+??? : (아픈) I think you've come to the right place. From here, all you have to do is follow the trail behind this restaurant.
 Main Character : Really?
 ??? : (망설이며) Um... but...
 Main Character : ...?
@@ -25,12 +25,12 @@ Main Character : I don't know if I can afford the accommodation.
 Main Character : Pardon?
 ??? : (아픈) I thought about closing the store for a few days because of an urgent matter just before we meet.
 ??? : (아픈) Can you take care of this place while I'm away?
-??? : (아픈) I don't have many visitors, but I always have one or two people a day.
+??? : (아픈) I don't have many visitors, but I always have one or two a day.
 ??? : (아픈) They have come all the way to my shop, and I can't just let them go back.
 ??? : (아픈) I'll pay you enough for your part-time job! Of course, I won't charge you for accommodation.
 Main Character : It's a very grateful offer to me, but...
 Main Character : Are you sure you're okay with that? You can leave the store to someone you've never seen before?
-??? : (아픈 미소) Of course. I can tell right away what's inside your mind at a single glance.
+??? : (아픈 미소) Of course. I can tell it right away what's inside your mind at a single glance.
 Main Character : Um...
 Main Character : Then just for a few days...
 ??? : (아픈 미소) Good for you!

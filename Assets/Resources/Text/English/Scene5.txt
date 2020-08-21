@@ -7,10 +7,10 @@ Dawn : Come to think of it...
 choice	Did you come all this way here alone?	Didn't you come with your family?
 Eugene : My family says they still have some work to do. So I came here alone.
 Eugene : My wife is a high school teacher, and she seems to be busier this year.
-Dawn : I think so.
+Dawn : I see.
 Dawn : Now I understand what you meant by the fact that you haven't had a real vacation.
 Eugene : We hardly ever saw each other in our first term. Every day was like a war, especially until my child went to school.
-Eugene : (웃으며) It was amazing.
+Eugene : (웃으며) That was amazing.
 Dawn : You have a child?
 Eugene : Already 9 years old. He went to his grandmother's house because he is on vacation these days. I heard that he already made friends in there.
 choice	You seem to love your family very much.	What a harmonious family.
@@ -22,10 +22,10 @@ Eugene : (가라앉은) I had a lot of regrets about choosing this job.
 Dawn : Why did you decide to become a police officer?	
 Eugene : Now that I think about it, I must have been vaguely longing for the job of police.
 Eugene : I thought I would have to be a cop at that time, but now I can't remember why.
-Eugene : (웃으며) So Is this a so-called young blood?
+Eugene : (웃으며) Maybe it's because of young blood?
 Dawn : But you hold on to your dream after all.
-Eugene : That's because my family helped me a lot.
-Eugene : Especially, my wife kept supporting me. 
+Eugene : My family helped me a lot.
+Eugene : Especially, my wife kept supporting me.
 Eugene : She must have been in a difficult situation for herself, but she recognized and listened to my concerns before anyone else.
 Eugene : Perhaps that's a reason why I don't care about the past I decided to become a police officer anymore.
 Eugene : It's purely because of her that I'm continuing this work now, regardless of the past.
@@ -41,11 +41,11 @@ Eugene : A lot has changed since that happened.
 Eugene : Once there was a report that a drunkard carrying a knife was threatening citizens.
 Eugene : Fortunately, it didn't spread to a serious situation, but there were some injuries during the suppression process.
 Eugene : It wasn't such a big injury, but my wife seemed to be in a great shock.
-choice	I think I'll do the same goes for me.	Didn't you feel anything after all that happened?
+choice	I think the same goes for me.	Didn't you feel anything after all that happened?
 Eugene : (웃으며) I thought it was really nothing.
 Eugene : (슬픈 미소) And I was beginning to realize something as days went by. About the fact that the police are always exposed to various dangers.
-Eugene : (슬픈 미소) I understood why she reacted like that.
-Eugene : (슬픈 미소) Only then I realize how precious and grateful my daily life is with my loved ones.
+Eugene : (슬픈 미소) Then, I understood why she reacted like that.
+Eugene : (슬픈 미소) Only then I realized how precious and grateful my daily life is with my loved ones.
 Eugene : (웃으며) So why do we have to fight each other stubbornly?
 Eugene : (생각난 듯) Oh, time really flies. I think I have to go now.
 Eugene : It was nice talking with you, Dawn.

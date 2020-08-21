@@ -8,8 +8,8 @@ reaction	ReactionGrandma
 choice	I don't understand what exactly do you mean...	Can I hear what you're talking about?
 ??? : (쓸쓸한) It's a long story.
 ??? : I was born as the first daughter of a poor farmer in a mountain village.
-??? : At that time, my parents had so little that they could earn a living by farming other people's fields.
-??? : We haven't had much improvement since then, but we've been satisfied with our own lives.
+??? : At that time, their parents had few properties to make ends meet by cultivating other people's fields.
+??? : We were not rich, but we've been satisfied with what we had.
 ??? : Then one day, a big war broke out.
 ??? : Flames and smoke rose everywhere, and people's screams echoed through the valleys.
 ??? : (굳은) I still clearly remember my father holding my hand tightly and running with all his might.
@@ -20,21 +20,20 @@ Dawn : You experienced something really... terrible.
 Dawn : That must have been a tough choice.
 ??? : It was inevitable. And it was common in those days.
 ??? : But he was at least a diligent person.
-??? : Because he had some property inherited from his parents, I thought there would be no problem if we worked hard enough.
-??? : My husband wanted to go out to the city and do business.
+??? : And he had some property inherited from his parents, So I thought there would be no problem if we worked hard enough.
+??? : My husband wanted to go out to the city and do his own business.
 ??? : I was worried but I said yes because I don't think I can stay in my completely ruined hometown.
 ??? : Things went better than I thought at first. We quickly settled down and soon we even had a baby.
 ??? : My tiny little boy...
 ??? : (웃으며) Yes, the one who looks just like you.
 choice	Do I look that much alike?	That's why you kept staring at me.
-??? : (웃으며) That's right.
+??? : (웃으며) Yes, you're right.
 ??? : But then everything started to go wrong.
 ??? : (굳은) My husband, that man started to show his true nature when things got better.
-??? : At first I thought he was sick or something.
-??? : The hard-working man kept taking a break from work, even leaving his seat empty during the business.
+??? : At first I thought he was sick or something, because he began to have more days off from work.
 ??? : I couldn't believe it when I heard he was in and out of gambling.
 ??? : I thought he'd never do that.
-??? : That night, I tried to feel him out. I asked him where he's been going these days and why he keeps leaving his seat empty.
+??? : That night, I tried to feel him out. I asked him where he's been these days and why he keeps leaving his seat empty.
 ??? : Then something unbelievable happened.
 ??? : (굳은) Suddenly he slapped me in the face.
 Dawn : ...
@@ -42,8 +41,8 @@ Dawn : ...
 ??? : (굳은) I didn't even feel the pain. I just stared blankly at the man who was once my husband.
 ??? : (굳은) That man didn't stop there, but he started beating me up.
 ??? : (굳은) When I couldn't breathe properly, he stopped punching.
-??? : (굳은) I didn't even know why I should be treated like that.
-??? : (굳은) I couldn't believe myself whether he was really my husband or the man I knew.
+??? : (굳은) I didn't understand why I should be treated like that.
+??? : (굳은) I couldn't believe myself whether he was really my husband I knew.
 ??? : (굳은) The next day he acted as if nothing had really happened.
 ??? : (굳은) I would have thought yesterday was my dream if it hadn't been for the bruises left all over my body.
 ??? : (굳은) But even after that, he hit me frequently.
@@ -55,7 +54,7 @@ Dawn : ...
 ??? : (쓸쓸한) I know. I was curious about that, too.
 ??? : (쓸쓸한) Why isn't anyone helping me? Do they really not know about this?
 ??? : (굳은) Now I feel like I should have fought that man even if I was going to die...
-??? : (굳은) At that time, I had only one thought in my head.
+??? : (굳은) But at that time, I had only one thought in my head.
 ??? : (굳은) All I had to do was protect my child, my only child.
 ??? : (슬픈 미소) I was foolish...
 choice	But you're still amazing. You protected your son after all.	I'm sorry, but is your son...?
@@ -64,7 +63,7 @@ choice	But you're still amazing. You protected your son after all.	I'm sorry, bu
 Dawn : ...
 ??? : (쓸쓸한) My life is nothing but hardships. Isn't it?
 ??? : (쓸쓸한) I've endured terrible poverty, the flames of war, the violence of my husband somehow.
-??? : (쓸쓸한) Now I'm waiting for the day when I see my child again.
+??? : (쓸쓸한) And now I'm waiting for the day when I see my child again.
 Dawn : ...
 ??? : (슬픈 미소) I'm sorry. You must have felt a lot of pressure cause I bring up such a heavy story all of sudden.
 ??? : I'm going now. I've taken too much time away from young man.
