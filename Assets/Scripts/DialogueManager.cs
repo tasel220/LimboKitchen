@@ -13,8 +13,7 @@ public class DialogueManager : MonoBehaviour, IManager
 
     //public int SceneNumber;
     public Image background;
-    public Image leftSpeaker;
-    public Image rightSpeaker;
+    public Image speaker;
     public Text printName;
     public Text utterance;
 
@@ -36,8 +35,7 @@ public class DialogueManager : MonoBehaviour, IManager
         GameManager.instance.currentSceneManager = this;
         //leftSpeaker.sprite = GameManager.instance.SpriteDictionary[SpriteName.None];
         //rightSpeaker.sprite = GameManager.instance.SpriteDictionary[SpriteName.None];
-        leftSpeaker.sprite = GetSprite(CharacterName.None);
-        rightSpeaker.sprite = GetSprite(CharacterName.None);
+        speaker.sprite = GetSprite(CharacterName.None);
         //ParseDialogue(Resources.Load<TextAsset>("Text/Scene" + SceneNumber.ToString()).text);
         if(GameManager.instance != null)
             ParseDialogue(GameManager.instance.rawDialogue);
@@ -136,13 +134,9 @@ public class DialogueManager : MonoBehaviour, IManager
             {
                 case LineType.speech:
                     //Debug.Log(curLine.utterance);
-                    if (curLine.right)
-                        //rightSpeaker.sprite = GameManager.instance.SpriteDictionary[curSpeech.spriteName];
-                        rightSpeaker.sprite = GetSprite(curLine.spriteName, curLine.emotion);
-                    else
-                    {
-                        leftSpeaker.sprite = GetSprite(curLine.spriteName, curLine.emotion);
-                    }
+                    if (!curLine.MC)
+                        speaker.sprite = GetSprite(curLine.spriteName, curLine.emotion);
+                    
                     printName.text = curLine.printName;
                     utteranceToPrint = curLine.utterance;
                     StartCoroutine(Type());
@@ -159,18 +153,15 @@ public class DialogueManager : MonoBehaviour, IManager
                     //utterance.DOText(curSpeech.utterance, 0.5f);
                     break;
                 case LineType.enter:
-                    if (curLine.right)
-                        //rightSpeaker.sprite = GameManager.instance.SpriteDictionary[curSpeech.spriteName];
-                        rightSpeaker.sprite = GetSprite(curLine.spriteName, curLine.emotion);
-                    else
-                        leftSpeaker.sprite = GetSprite(curLine.spriteName, curLine.emotion);
+                    if (!curLine.MC)
+                        speaker.sprite = GetSprite(curLine.spriteName, curLine.emotion);
                     //charName = curLine.spriteName;
                     NextTalk();
                     break;
 
                 case LineType.exit:
                     //if (leftSpeaker.sprite.name.Contains(curLine.spriteName.ToString()))
-                    leftSpeaker.sprite = GetSprite(CharacterName.None);
+                    speaker.sprite = GetSprite(CharacterName.None);
                     Debug.Log(charName + " 퇴장");
                     //else if (rightSpeaker.sprite.name.Contains(curLine.spriteName.ToString()))
                     //    rightSpeaker.sprite = GetSprite(CharacterName.None);
@@ -216,7 +207,7 @@ public class DialogueManager : MonoBehaviour, IManager
         public CharacterName spriteName;
         public string emotion;
         public string utterance;
-        public bool right;
+        public bool MC;
 
         public LineType lineType;
 
@@ -231,7 +222,7 @@ public class DialogueManager : MonoBehaviour, IManager
         {
             char[] trimmers = { ':', '\t' };
             string[] s = row.Split(trimmers);
-            right = false;
+            MC = false;
             spriteName = charName;
             emotion = "";
             utterance = "";
@@ -259,7 +250,7 @@ public class DialogueManager : MonoBehaviour, IManager
 
                 if (spriteName == CharacterName.Dowoon)
                 {
-                    right = true;
+                    MC = true;
                 }
             }
             else if(s[0].Contains("exit"))
@@ -303,9 +294,9 @@ public class DialogueManager : MonoBehaviour, IManager
                 }
 
 
-                if (printName == "도운" || printName == "주인공" || printName == "Main character")
+                if (printName == "도운" || printName == "주인공" || printName == "Main character" || printName == "Dawn")
                 {
-                    right = true;
+                    MC = true;
                     spriteName = CharacterName.Dowoon;
                 }
             }
