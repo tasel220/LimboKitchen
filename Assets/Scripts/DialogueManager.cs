@@ -110,7 +110,6 @@ public class DialogueManager : MonoBehaviour, IManager
     {
         if (!allowNext)
         {
-            Debug.Log("아직"+currentIndex);
             return;
         }
         if (++currentIndex >= speeches.Count)
@@ -342,6 +341,7 @@ public class DialogueManager : MonoBehaviour, IManager
 
         Sprite s = Resources.Load<Sprite>("Image/Character/" + charName + "_" + emotion);
         if(s == null) return Resources.Load<Sprite>("Image/Character/" + charName);
+        Debug.Log(charName);
         return s;
     }
 
