@@ -177,6 +177,22 @@ public class DialogueManager : MonoBehaviour, IManager
                     utterance.alignment = TextAnchor.UpperCenter;
                     background.raycastTarget = false;
                     break;
+
+                case LineType.ending:
+                    int impressedN = GameManager.instance.impressedPeople.Count;
+                    if(impressedN < 2)
+                    {
+                        GameManager.instance.LoadNewDialogue(curLine.endings[0]);
+                    }
+                    else if (impressedN < 4)
+                    {
+                        GameManager.instance.LoadNewDialogue(curLine.endings[1]);
+                    }
+                    else
+                    {
+                        GameManager.instance.LoadNewDialogue(curLine.endings[2]);
+                    }
+                    break;
             }
 
         }
@@ -218,6 +234,8 @@ public class DialogueManager : MonoBehaviour, IManager
 
         public string reactionFile;
 
+        public string[] endings;
+
         public Line(string row, CharacterName charName)
         {
             char[] trimmers = { ':', '\t' };
@@ -231,6 +249,7 @@ public class DialogueManager : MonoBehaviour, IManager
             choice2 = "";
             result = new string[] { "", ""};
             reactionFile = "";
+            endings = new string[] { "", "", "" };
 
             s[0] = s[0].Trim();
             if (s[0].StartsWith("/"))
@@ -280,6 +299,14 @@ public class DialogueManager : MonoBehaviour, IManager
                 reactionFile = s[1];
             }
 
+            else if (s[0] == "ending")
+            {
+                lineType = LineType.ending;
+                endings[0] = s[1];
+                endings[1] = s[2];
+                endings[2] = s[3];
+            }
+
             else
             {
                 lineType = LineType.speech;
@@ -326,7 +353,7 @@ public class DialogueManager : MonoBehaviour, IManager
         if(nextLine.lineType == LineType.result)
         {
             choiceN = num;
-            GameManager.instance.ChoiceResult(nextLine.result[choiceN - 1]);
+            GameManager.instance.LoadNewDialogue(nextLine.result[choiceN - 1]);
         }
         else
         {

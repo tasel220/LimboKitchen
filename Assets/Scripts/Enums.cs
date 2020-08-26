@@ -9,7 +9,7 @@ public enum SceneTransitionType { FadeIO, }
 
 public enum GameSceneType { Dialogue, Cook, Clean, Ending }
 public enum CharacterName { None, BaekYum, Dowoon, Grandma, Gion, Mina, Eugene, Unknown }
-public enum LineType { speech, enter, exit, choice, narration, result, reaction }
+public enum LineType { speech, enter, exit, choice, narration, result, reaction, ending }
 
 public enum IngredientType1 { meat, seafood, vegetable }
 

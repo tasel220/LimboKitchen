@@ -212,10 +212,10 @@ public class GameManager : MonoBehaviour
         instance.StartCoroutine(instance.DelayedSceneChange("Title"));
     }
 
-    public void ChoiceResult(string result)
+    public void LoadNewDialogue(string fileName)
     {
         rawDialogue.Clear();
-        var t = Resources.Load<TextAsset>(textPath + result).text;
+        var t = Resources.Load<TextAsset>(textPath + fileName).text;
         rawDialogue.AddRange(t.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None));
         StartCoroutine(DelayedSceneChange(GameSceneType.Dialogue));
     }
