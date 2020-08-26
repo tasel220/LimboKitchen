@@ -1,76 +1,76 @@
 Dialogue
 Restaurant	Mina
-도운 : 아저씨 스타일이라 마음에 드실지 모르겠네요.
+Dawn : I'm not sure you'll like it.
 reaction	ReactionMina
-도운 : 지금 일부러 그러는 거죠?
-미나 : 반쯤은 그런 것도 있고, 어떻게 불러야 할지 잘 모르겠어서 그런 것도 있어요. 
-미나 : 누구 씨 하는 건 너무 어색하지 않아요? 아직 전 고등학생인데.
-미나 : 아저씨라고 부른다고 나이 몇 살 더 먹는 것도 아니잖아요?
-choice	원래 이렇게 거침없는 성격인가요?	정말... 솔직하시네요.
-미나 : 제가 좀 그런 편이죠.
-미나 : 그래도 오늘은 오랜만에 외출해서 좀 들뜬 것도 있어요.
-도운 : 무슨 사정이 있었나봐요?
-미나 : 입원 치료를 꽤 길게 받아서요.
-도운 : 그랬군요. 지금은 좀 괜찮아진 거예요?
-미나 : (자조하며) 저도 그랬으면 좋겠어요. 
-미나 : 이건 괜찮아질 수 있는 문제가 아니거든요. 사실, 꽤 치명적이죠.
-미나 : (웃으며) 그래도 뭐, 아직 이렇게 살아서 돌아다니잖아요?
-choice	...	이런, 미안해요.
-미나 : (짜증난) 아, 제발. 그러지 좀 마요.
-미나 : (짜증난) 어쩜 다들 그리도 똑같은지!
-미나 : (짜증난) 그거 아세요? 이런 이야기만 나오면 사람들이 보이는 반응은 딱 두 가지에요.
-미나 : (짜증난) 몸 둘 바를 몰라 하면서 당황하거나, 측은한 눈빛으로 절 바라보죠.
-미나 : (짜증난) 그런 병을 앓고 있으니 제가 당연히 불행할 거라고 생각하나 봐요.
-도운 : 미안해ㅇ...
-미나 : (험악한) 그러지 말라니까요!
-미나 : (짜증난) 도대체 다들 뭐가 그렇게 미안하다는 건데요?
-미나 : (짜증난) 겉으로 봐서는 아픈지 모를 수도 있죠. 몰라서 물어보는걸 누가 뭐라고 하겠어요?
-미나 : (짜증난) 제가 어디 이마에다 환자라고 써 붙이고 다니는 건 아니잖아요?
-미나 : (한풀 꺾인) 사람들이 그럴 때마다, 저는... 정말로 불행해진 것 같은 기분이 들어요.
-도운 : ...
-미나 : (한풀 꺾인) 남들이 보기에는 어떻든 간에, 전 괜찮아요.
-미나 : (한풀 꺾인) 그냥... 누구나 고민 한 가지 정도는 안고 살아가잖아요.
-미나 : (한풀 꺾인) 이것도 마찬가지라고 생각해요.
-미나 : (한풀 꺾인) 적어는 저는 그렇게 믿으려고 노력하고 있어요.
-choice	...그렇군요.	저 때문에 괜히 기분 상하게 해서 미... 아니, 어... 그러니까...
-미나 : ...
-미나 : (한숨) 평소에 말주변 없다는 소리 많이 듣는 편이죠?
-도운 : ...
-도운 : 그러고 보니 교복은 왜 입고 왔어요?
-미나 : 기분 좀 내보려고 그랬어요.
-미나 : 입학은 했어도 실제로 학교에 가본 적은 없으니까, 여태껏 못 입어봤거든요.
-미나 : 의사 선생님들 예상대로였다면 전 초등학교도 졸업 못 했을 거예요.
-미나 : 지금 제가 여기 앉아서 아저씨랑 이야기 나누고 있는 것도, 제게는 굉장한 행운인 셈이죠.
-도운 : 영광이네요. 그런 귀중한 시간을 저한테 써주셔서.
-미나 : 글쎄요. 그건 아저씨한테도 마찬가지라고 생각하는데요.
-미나 : 누구에게나 끝은 있어요. 단지 보통은 그게 언제일지 예측하기가 어려울 뿐이죠.
-미나 : 통계적 확률을 고려한다면 제 기대수명은 확실히 건강한 사람보다는 짧을 거예요.
-미나 : 그리고 사람들은 많든 적든 그런 기대를 품은 채로 살아가고 있구요.
-미나 : 아저씨도 무의식적으로 그렇게 생각했기 때문에 저한테 그런 말씀을 하신 거잖아요.
-choice	음...	어...
-미나 : 물론 그런 사고방식이 잘못되었다는 건 아니에요. 오히려 아주 합리적인 행동이죠.
-미나 : 매 순간 죽음에 대한 공포에 시달린다면 어떻게 정상적인 생활이 가능하겠어요.
-미나 : 예측을 통해 삶에서 불확실성을 최대한 배제하고자 하는 행위는 생존을 위한 본능에 가까울 거예요.
-미나 : 하지만 그와는 별개로 확률 자체는 가능성을 논하는 것일 뿐, 아무것도 보장해주지 않아요.
-미나 : 유사 이래 한 번도 없었던 일이라고 해서 지금 일어나지 않으리라는 법은 없죠.
-미나 : 어쨌든, 결론은 아저씨의 시간도 제 시간만큼이나 소중하다는 거예요.
-choice	평소에도 이런 생각들을 자주 해요?	혹시... 이과생?
-미나 : 음... 저는 그냥 어렸을 때부터 이랬던 것 같아요.
-미나 : 한 번은 잠드는 게 무서워서 자지 않겠다고 버틴 적도 있었어요.
-도운 : 무서워서요?
-미나 : 이대로 영원히 잠들어서 다시는 일어나지 못하면 어쩌나 싶었거든요.
-미나 : 아무 걱정 없이 잠자리에 드는 친구들이 정말 신기하다고 생각했죠.
-미나 : 한동안 뜬눈으로 밤을 보내다 보니 부모님께서 많이 걱정하셨어요.
-미나 : 절대 네가 생각하는 그런 일은 일어나지 않을 거라고 몇 번이나 말씀하셨어요.
-미나 : 하지만 그래도 저는 안심이 되지 않았어요.
-미나 : 부모님이 매일 아침 제가 일어날 때까지 깨워주기로 약속을 받고 나서야 겨우 잠이 들 수 있었어요.
-미나 : (웃으며) 당시에는 나름 진지한 고민이었는데, 지금 생각해보니 정말 손이 많이 가는 아이였네요.
-도운 : 혹시 요즘도 부모님이 아침에 깨워주시나요?
-미나 : (빨개진) 이건 어릴 때 이야기라니까요!
-도운 : 농담이에요.
-미나 : (빨개진) 그만 웃어요!
-도운 : 미안해요. 상상해보니 왠지 웃음이 나와서...
+Dawn : You're doing this on purpose, aren't you?
+Mina : You are half right, but also that's because I don't know what to call you.
+Mina : Isn't it kind of awkward to call you, 'sir'? I'm still a high school student after all.
+Mina : And, you're not going to get a few years older just because I call you uncle, are you?
+choice	Do you usually talk like this?	That's very... logical.
+Mina : I'm always like this.
+Mina : But I'm a bit excited today because it's been a while since I've been out.
+Dawn : What happened to you?
+Mina : I was hospitalized and received treatment for quite a long time.
+Dawn : I see. Is it getting better now?
+Mina : (자조하며) I wish I could.
+Mina : This is not a thing that can be getting better. Actually, it's quite deadly.
+Mina : (웃으며) Well, I'm still alive anyway.
+choice	...	I'm sorry to hear that.
+Mina : (짜증난) Oh, come on. Don't.
+Mina : (짜증난) It's always the same!
+Mina : (짜증난) You know what? There are only two reactions that people show when they talk about things like this.
+Mina : (짜증난) They either flustered or look at me with pitiful eyes.
+Mina : (짜증난) They think I must be unhappy to have such a disease.
+Dawn : Sorr...
+Mina : (험악한) I said don't do that!
+Mina : (짜증난) What the hell is everyone saying they're so sorry about?
+Mina : (짜증난) You can't tell just by looking at it. Who would blame you for just asking a question?
+Mina : (짜증난) Just because I'm a patient doesn't mean I'll write that on my forehead.
+Mina : (한풀 꺾인) Every time people act like that, I... I feel like I've really become unhappy.
+Dawn : ...
+Mina : (한풀 꺾인) Whatever people think, I'm fine.
+Mina : (한풀 꺾인) It's just... everyone has at least one problem in their lives.
+Mina : (한풀 꺾인) I think this is the same.
+Mina : (한풀 꺾인) At least I'm trying to believe that.
+choice	...I see.	I'm so... Oh, I mean... Well...
+Mina : ...
+Mina : (한숨) It's often said that you're a poor speaker, right?
+Dawn : ...
+Dawn : Come to think of it, why did you wear your school uniform?
+Mina : I tried to make myself feel better.
+Mina : I've never been to school, so I haven't worn it before.
+Mina : If the doctors were right, I even wouldn't have graduated from elementary school.
+Mina : It is very lucky for me to be sitting here and talking to you now.
+Dawn : It's an honor for me to spend such a valuable time of your.
+Mina : Well, I think that's the same for you.
+Mina : Everyone has an end. It's just usually hard to predict when it will be.
+Mina : Of course, considering statistical probabilities, my life expectancy would be shorter than a healthy person.
+Mina : And people, many or few, live with that kind of expectation.
+Mina : You told me that because you thought it unconsciously.
+choice	Um...	Uh...
+Mina : I'm not saying that's wrong. Rather, it's very reasonable.
+Mina : How can a normal life be possible if you suffer from fear of death every moment?
+Mina : The act of trying to eliminate as much uncertainty as possible in life through prediction is more like a survival instinct.
+Mina : But apart from that, the probability itself only discusses the possibility and guarantees nothing.
+Mina : Just because something has never happened before doesn't mean it won't happen.
+Mina : Anyway, the bottom line is that your time is as precious as mine.
+choice	Do you often think about these things?	When did you come up with these things?
+Mina : I think I've been like this since I was a kid.
+Mina : Once, I tried not to sleep because I was afraid to sleep.
+Dawn : Scared of what?
+Mina : I'm afraid I'll fall asleep forever and never wake up again.
+Mina : I thought it was surprising that my friends went to bed without any worries.
+Mina : My parents were very worried because I stayed up every single night.
+Mina : They have told me several times that what you worry about will never happen.
+Mina : But I was still not relieved.
+Mina : After my parents promised to wake me up every morning until I woke up, I could fall asleep.
+Mina : (웃으며) It was a serious concern at the time, but now that I think about it, I was a very demanding child.
+Dawn : Do your parents still wake you up in the morning?
+Mina : (빨개진) It's a childhood story!
+Dawn : I'm just kidding.
+Mina : (빨개진) Stop laughing!
+Dawn : I'm sorry. I just thought about it, and it made me laugh...
 / 갑자기 시야가 흐려진다. /
-도운 : 어...
-미나 : (당황한) 아저씨? 왜 그래요?
+Dawn : Uh...
+Mina : (당황한) What's wrong?
 / 시야가 어두워지기 시작한다. /
