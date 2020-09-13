@@ -142,6 +142,7 @@ public class GameManager : MonoBehaviour
     public void OnSceneChange(Scene previous, Scene current)
     {
         pausers.RemoveAll(x => x == null);
+        paused = false;
     }
 
     public IEnumerator DelayedSceneChange(string name)
