@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
     public IManager currentSceneManager;
     public Language language;
 
+    public bool paused;
+    public List<IPause> pausers = new List<IPause>();
+
     public string textPath
     {
         get
@@ -43,6 +46,7 @@ public class GameManager : MonoBehaviour
 
         if (instance == null)
         {
+            SceneManager.activeSceneChanged += OnSceneChange;
             instance = this;
         }
         else
@@ -50,6 +54,7 @@ public class GameManager : MonoBehaviour
             if (SceneManager.GetActiveScene().name == "Title")
             {
                 Destroy(instance.gameObject);
+                SceneManager.activeSceneChanged += OnSceneChange;
                 instance = this;
             }
             else if (instance != this)
@@ -133,6 +138,12 @@ public class GameManager : MonoBehaviour
             Proceed();
         }
     }
+
+    public void OnSceneChange(Scene previous, Scene current)
+    {
+        pausers.RemoveAll(x => x == null);
+    }
+
     public IEnumerator DelayedSceneChange(string name)
     {
         yield return new WaitForSeconds(0.1f);
@@ -230,6 +241,31 @@ public class GameManager : MonoBehaviour
         instance.language = lang;
         instance.currentSceneManager.ChangeLanguage(lang);
         Saver.SetLanguage(lang);
+    }
+
+    public void Pause()
+    {
+        paused = true;
+        if(pausers.Count > 0)
+        {
+            for(int i = 0; i < pausers.Count; i++)
+            {
+                //if (pausers[i] == null) pausers.Remove(pausers[i]);
+                pausers[i].OnPause();
+            }
+        }
+    }
+    public void Resume()
+    {
+        paused = false;
+        if (pausers.Count > 0)
+        {
+            for (int i = 0; i < pausers.Count; i++)
+            {
+                //if (pausers[i] == null) pausers.Remove(pausers[i]);
+                pausers[i].OnResume();
+            }
+        }
     }
 }
 
