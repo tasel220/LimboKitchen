@@ -1400,7 +1400,7 @@ PrefabInstance:
     - target: {fileID: 1870162008937621961, guid: 7d6452e09e48d2b48ba8027427ce2acb,
         type: 3}
       propertyPath: currentSceneNumber
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1870162008937621961, guid: 7d6452e09e48d2b48ba8027427ce2acb,
         type: 3}
@@ -2191,6 +2191,7 @@ MonoBehaviour:
   textDelay: 0.017
   pointerL: {fileID: 0}
   pointerR: {fileID: 0}
+  bgm: {fileID: 4917466743347707490}
 --- !u!4 &1921925491
 Transform:
   m_ObjectHideFlags: 0
@@ -2678,6 +2679,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BGMPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 4917466745490570758, guid: 68c991be723e15f4b8c5c0f8eddd4b03,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4917466745490570759, guid: 68c991be723e15f4b8c5c0f8eddd4b03,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2735,3 +2741,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68c991be723e15f4b8c5c0f8eddd4b03, type: 3}
+--- !u!82 &4917466743347707490 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4917466745490570758, guid: 68c991be723e15f4b8c5c0f8eddd4b03,
+    type: 3}
+  m_PrefabInstance: {fileID: 4917466743347707489}
+  m_PrefabAsset: {fileID: 0}

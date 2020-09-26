@@ -1,6 +1,6 @@
 Clean
 Dialogue
-Restaurant
+Restaurant	EugeneTheme
 / 가게 문이 열리는 소리가 들린다. /
 Dawn : ‘The guests?’
 Dawn : Good afternoon, sir.

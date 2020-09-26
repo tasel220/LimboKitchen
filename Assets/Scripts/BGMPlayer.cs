@@ -9,7 +9,7 @@ public class BGMPlayer : MonoBehaviour, IPause
         GameManager.instance.pausers.Add(this);
     }
 
-    AudioSource source;
+    public AudioSource source;
 
     public void OnPause()
     {

@@ -26,6 +26,7 @@ public class DialogueManager : MonoBehaviour, IManager
     public GameObject pointerL;
     public GameObject pointerR;
 
+    public AudioSource bgm;
 
     private bool allowNext = true;
 
@@ -49,9 +50,19 @@ public class DialogueManager : MonoBehaviour, IManager
 
         string[] f = rows[0].Split('\t');
 
+        //string[] firstRow = 
         background.sprite = Resources.Load<Sprite>("Image/Background/" + f[0]);
 
-        if (f.Length > 1) charName = (CharacterName)Enum.Parse(typeof(CharacterName), f[1]);
+        if (f.Length > 1)
+        {
+            Debug.Log(f[1]);
+            SetCharOrBGM(f[1]);
+
+            if(f.Length > 2)
+            {
+                SetCharOrBGM(f[2]);
+            }
+        }
 
         for(int i = 1; i < rows.Count; i++)
         {
@@ -102,6 +113,21 @@ public class DialogueManager : MonoBehaviour, IManager
                         }
                     }
                 }
+            }
+        }
+    }
+
+    private void SetCharOrBGM(string input)
+    {
+        if (Enum.TryParse(input, out CharacterName cn))
+            charName = cn;
+        else
+        {
+            AudioClip clip = Resources.Load<AudioClip>("SoundFiles/" + input);
+            if (clip != null)
+            {
+                bgm.clip = clip;
+                bgm.Play();
             }
         }
     }
